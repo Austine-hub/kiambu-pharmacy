@@ -9,6 +9,7 @@ import WhatsAppBanner from './component/WhatsAppBanner'
 import PharmacyProductGrid from './pages/PharmacyProductGrid'
 import HealthConditions from './outers/HealthConditions'
 import StatsComponent from './outers/StatsComponent'
+import Products from './products/Products'
 
 
 
@@ -17,6 +18,7 @@ function App() {
     <>
     <Header/>
     <Navbar/>
+    <Products/>
     <StatsComponent/>
     <WhatsAppBanner/>
     <HealthConditions/>
