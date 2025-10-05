@@ -27,12 +27,12 @@ const Navbar: React.FC = () => {
           <ul className={`${styles.topLinks} ${isMenuOpen ? styles.active : ""}`}>
             {[
               { label: "Buy Medicines", href: "#buy-medicines", active: true },
-              { label: "Find Doctors", href: "#find-doctors" },
+              { label: "General Consultation", href: "#find-doctors" },
               { label: "Lab Tests", href: "#lab-tests" },
-              { label: "Circle Membership", href: "#circle-membership" },
-              { label: "Health Records", href: "#health-records" },
-              { label: "Credit Card", href: "#credit-card", badge: "New" },
-              { label: "Buy Insurance", href: "#buy-insurance", badge: "New" },
+              { label: "Mother And Child Health Care", href: "#circle-membership" },
+              { label: "VCT Services", href: "#health-records" },
+              { label: "Radiological Services", href: "#radiology", badge: "New" },
+              { label: "Reproductive Health", href: "#buy-insurance", badge: "New" },
             ].map(({ label, href, badge, active }) => (
               <li
                 key={label}
@@ -64,12 +64,12 @@ const Navbar: React.FC = () => {
             }`}
           >
             {[
-              "Apollo Products",
+              "Her Health",
               "Baby Care",
               "Nutritional Drinks & Supplements",
               "Women Care",
               "Personal Care",
-              "Ayurveda",
+              "Mens Health",
               "Health Devices",
               "Home Essentials",
               "Health Condition",

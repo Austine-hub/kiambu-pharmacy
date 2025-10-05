@@ -7,8 +7,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-  gstNumber = "06AKVPA3425A1ZM",
-  phoneNumber = "08054798659",
+    phoneNumber = "0796787207",
 }) => {
   const [query, setQuery] = useState("");
 
@@ -37,21 +36,17 @@ const Header: React.FC<HeaderProps> = ({
                   strokeWidth="1.5"
                 />
               </svg>
-              <span className={styles.logoBadge}>VKAN</span>
+              <span className={styles.logoBadge}>BETHELEX</span>
             </div>
-            <h1 className={styles.logoText}>VKAN HEALTHCARE</h1>
+            <h1 className={styles.logoText}>BETHELEX HEALTHCARE</h1>
           </div>
 
           <div className={styles.contact}>
             <div>
-              <span className={styles.label}>Talk to us</span>
-              <a href={`tel:${phoneNumber}`} className={styles.value}>
+              <span className={styles.label}>Talk to us </span> <br></br>
+                <strong>CALL</strong> <a href={`tel:${phoneNumber}`} className={styles.value}>
                 {phoneNumber}
               </a>
-            </div>
-            <div>
-              <span className={styles.label}>GST</span>
-              <span className={styles.value}>{gstNumber}</span>
             </div>
           </div>
         </div>
@@ -60,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
         <nav className={styles.navbar} aria-label="Main Navigation">
           <ul className={styles.navList}>
             <li><a href="#home">Home Page</a></li>
-            <li><a href="#company">Company Profile</a></li>
+            <li><a href="#company">About Us</a></li>
             <li><a href="#products">Our Products</a></li>
             <li><a href="#contact">Contact Us</a></li>
           </ul>

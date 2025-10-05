@@ -1,6 +1,12 @@
-import React from 'react';
-import styles from './ProductGrid.module.css';
+import React from "react";
+import styles from "./ProductGrid.module.css";
 
+// Import images
+import whatsapp1 from "../assets/whatsapp/whatsapp1.png";
+import whatsapp3 from "../assets/whatsapp/whatsapp3.png";
+import consultation1 from "../assets/consultation/consultation1.png";
+
+// Define the product type
 interface Product {
   id: number;
   name: string;
@@ -8,60 +14,34 @@ interface Product {
 }
 
 const ProductGrid: React.FC = () => {
+  // Reuse existing images — avoids unnecessary imports
   const products: Product[] = [
-    {
-      id: 1,
-      name: 'Ferrous Bisglycinate with Zinc Folic Acid Methylcobalamin Tablet',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&h=300&fit=crop'
-    },
-    {
-      id: 2,
-      name: 'Cefpodoxime Proxetil 200',
-      image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=300&h=300&fit=crop'
-    },
-    {
-      id: 3,
-      name: 'Cefuroxime 250 mg',
-      image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300&h=300&fit=crop'
-    },
-    {
-      id: 4,
-      name: 'Phenylephrine CPM with Paracetamol (Double Strength) Syrup',
-      image: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=300&h=300&fit=crop'
-    },
-    {
-      id: 5,
-      name: 'Pantoprazole 40mg Injection',
-      image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=300&h=300&fit=crop'
-    },
-    {
-      id: 6,
-      name: 'SUNSCREEN GEL SPF 50',
-      image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=300&fit=crop'
-    },
-    {
-      id: 7,
-      name: 'Fluticasone Eye Drops',
-      image: 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=300&h=300&fit=crop'
-    },
-    {
-      id: 8,
-      name: 'Carboxymethylcellulose (1% w/v)',
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&h=300&fit=crop'
-    }
+    { id: 1, name: "Runny nose / Nasal congestion", image: whatsapp1 },
+    { id: 2, name: "Cough", image: whatsapp3 },
+    { id: 3, name: "Sore Throat Medicine", image: consultation1 },
+    { id: 4, name: "Contraceptives", image: whatsapp1 },
+    { id: 5, name: "Headache / Head pain", image: whatsapp3 },
+    { id: 6, name: "Fever / Hotness of the Body", image: consultation1 },
+    { id: 7, name: "Muscle / Body aches (Myalgia)", image: whatsapp1 },
+    { id: 8, name: "Chest pain", image: whatsapp3 },
+    { id: 9, name: "Fatigue / Lack of energy", image: consultation1 },
+    { id: 10, name: "Night sweats / Chills", image: whatsapp3 },
+    { id: 11, name: "Diarrhea", image: consultation1 },
   ];
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <h2 className={styles.title}>Most Popular Products</h2>
+
       <div className={styles.grid}>
         {products.map((product) => (
-          <div key={product.id} className={styles.card}>
+          <article key={product.id} className={styles.card}>
             <div className={styles.imageWrapper}>
-              <img 
-                src={product.image} 
+              <img
+                src={product.image}
                 alt={product.name}
                 className={styles.image}
+                loading="lazy"
               />
               <div className={styles.watermark}>
                 <span>WATERMARK</span>
@@ -69,12 +49,15 @@ const ProductGrid: React.FC = () => {
                 <span>WATERMARK</span>
               </div>
             </div>
+
             <h3 className={styles.productName}>{product.name}</h3>
-            <button className={styles.button}>Get a Price/Quote</button>
-          </div>
+            <button className={styles.button} aria-label={`Get quote for ${product.name}`}>
+              Get a Price / Quote
+            </button>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
