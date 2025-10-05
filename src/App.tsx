@@ -7,6 +7,9 @@ import WomenCare from './pages/WomenCare'
 import Navbar from './component/header/Navbar'
 import WhatsAppBanner from './component/WhatsAppBanner'
 import PharmacyProductGrid from './pages/PharmacyProductGrid'
+import HealthConditions from './outers/HealthConditions'
+import StatsComponent from './outers/StatsComponent'
+
 
 
 function App() {
@@ -14,7 +17,9 @@ function App() {
     <>
     <Header/>
     <Navbar/>
+    <StatsComponent/>
     <WhatsAppBanner/>
+    <HealthConditions/>
     <PharmacyProductGrid/>
     <WomenCare/>
     <ProductGrid/>
