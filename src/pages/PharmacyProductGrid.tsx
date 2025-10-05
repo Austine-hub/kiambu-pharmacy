@@ -2,8 +2,6 @@ import { useState, useMemo, memo } from "react";
 import type { FC } from "react";
 import styles from "./PharmacyProductGrid.module.css";
 
-
-
 // -----------------------------
 // 🔹 Types
 // -----------------------------
@@ -12,7 +10,7 @@ interface Product {
   name: string;
   price: number;
   originalPrice: number;
-  image: string;
+  image?: string;
   buyXGetY?: string;
 }
 
@@ -42,7 +40,10 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
     <article className={styles.productCard}>
       <div className={styles.productImageContainer}>
         <img
-          src={product.image}
+          src={
+            product.image ||
+            "https://via.placeholder.com/300x300.png?text=Product+Image"
+          }
           alt={product.name}
           className={styles.productImage}
           loading="lazy"
@@ -93,7 +94,15 @@ const Pagination: FC<PaginationProps> = ({
     if (currentPage <= 4) {
       pages.push(...[1, 2, 3, 4, 5], "...", totalPages);
     } else if (currentPage >= totalPages - 3) {
-      pages.push(1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      pages.push(
+        1,
+        "...",
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages
+      );
     } else {
       pages.push(
         1,
@@ -157,7 +166,7 @@ const Pagination: FC<PaginationProps> = ({
 const PharmacyProductGrid: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // ⚡ Simulated product data (would come from API in real app)
+  // ⚡ Simulated product data (minimum 6 items per page)
   const products: Product[] = [
     {
       id: 1,
@@ -176,7 +185,30 @@ const PharmacyProductGrid: FC = () => {
       image:
         "https://images.unsplash.com/photo-1615486511262-2fec7c9e5d9e?w=300&h=300&fit=crop",
     },
-    // ... rest of your product list
+    {
+      id: 3,
+      name: "Digital Thermometer",
+      price: 199.0,
+      originalPrice: 399.0,
+    },
+    {
+      id: 4,
+      name: "First Aid Kit - 50 Items",
+      price: 850.0,
+      originalPrice: 1200.0,
+    },
+    {
+      id: 5,
+      name: "Hand Sanitizer (500ml)",
+      price: 149.0,
+      originalPrice: 250.0,
+    },
+    {
+      id: 6,
+      name: "Reusable Face Mask (Pack of 3)",
+      price: 299.0,
+      originalPrice: 450.0,
+    },
   ];
 
   const handlePageChange = (page: number) => {

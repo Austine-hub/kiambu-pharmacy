@@ -3,48 +3,46 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 50%, #FFD4B8 100%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 50%, #ffd4b8 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   width: 100%;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 20px 30px;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
-  position: relative;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
 }
 
 /* Logo Section */
 .logoSection {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
   flex-shrink: 0;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: clamp(42px, 6vw, 56px);
+  height: clamp(42px, 6vw, 56px);
   border-radius: 8px;
   object-fit: cover;
 }
 
 .brandName {
-  font-size: 16px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 700;
-  color: #2C7A7B;
-  line-height: 1.2;
+  color: #2c7a7b;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .pharmacyText {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   font-weight: 600;
   color: #319795;
 }
@@ -53,439 +51,121 @@
 .textSection {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  flex-shrink: 0;
+  text-align: center;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 200px;
 }
 
 .yayText {
-  font-size: 24px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 700;
-  color: #2D3748;
-  line-height: 1;
+  color: #2d3748;
 }
 
 .normalText {
-  font-size: 18px;
-  color: #4A5568;
-  font-weight: 400;
-  line-height: 1.2;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #4a5568;
 }
 
 .ctaText {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.whatsappText,
+.orderText {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .whatsappText {
-  font-size: 32px;
-  font-weight: 800;
-  color: #F59E0B;
-  text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: 1px;
-}
-
-.toText {
-  font-size: 24px;
-  font-weight: 600;
-  color: #2D3748;
-  text-transform: uppercase;
+  color: #f59e0b;
 }
 
 .orderText {
-  font-size: 32px;
-  font-weight: 800;
-  color: #1A202C;
-  text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: 1px;
+  color: #1a202c;
+}
+
+.toText {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: #2d3748;
 }
 
 /* Button Section */
 .buttonSection {
   flex-shrink: 0;
-  z-index: 10;
 }
 
 .whatsappButton {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background-color: #F59E0B;
-  color: #FFFFFF;
-  padding: 16px 28px;
+  gap: 0.75rem;
+  background-color: #25d366;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
   transition: all 0.3s ease;
-  white-space: nowrap;
 }
 
 .whatsappButton:hover {
-  background-color: #D97706;
+  background-color: #1ebe5c;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
-}
-
-.whatsappButton:active {
-  transform: translateY(0);
 }
 
 .buttonText {
-  font-size: 15px;
   line-height: 1.2;
 }
 
 .whatsappIcon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
 }
 
 /* Illustration Section */
 .illustration {
-  position: relative;
-  width: 280px;
-  height: 140px;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
 }
 
-.illustrationContent {
-  position: relative;
+.illustrationImage {
   width: 100%;
-  height: 100%;
-}
-
-/* Chat Bubbles */
-.chatBubble {
-  position: absolute;
-  background-color: #FFFFFF;
+  height: auto;
   border-radius: 12px;
-  padding: 8px 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  animation: float 3s ease-in-out infinite;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.bubbleLines {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.bubbleLines span {
-  display: block;
-  height: 3px;
-  background-color: #E2E8F0;
-  border-radius: 2px;
-}
-
-.bubbleLines span:first-child {
-  width: 30px;
-}
-
-.bubbleLines span:last-child {
-  width: 20px;
-}
-
-/* Characters */
-.character {
-  position: absolute;
-  bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.characterHead {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-bottom: 4px;
-  border: 3px solid #FFFFFF;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.characterBody {
-  width: 50px;
-  height: 50px;
-  background-color: #4299E1;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.stethoscope {
-  position: absolute;
-  top: 50px;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #2D3748;
-  border-radius: 50%;
-  border-top-color: transparent;
-  border-left-color: transparent;
-}
-
-/* Medical Elements */
-.medicalCross {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  background-color: #48BB78;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
-}
-
-.pill {
-  position: absolute;
-  width: 8px;
-  height: 20px;
-  background: linear-gradient(180deg, #EF4444 0%, #EF4444 50%, #FBBF24 50%, #FBBF24 100%);
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.heartbeat {
-  position: absolute;
-  width: 40px;
-  height: 4px;
-  background-color: #10B981;
-  border-radius: 2px;
-  position: relative;
-}
-
-.heartbeat::before,
-.heartbeat::after {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 12px;
-  background-color: #10B981;
-  border-radius: 2px;
-}
-
-.heartbeat::before {
-  left: 10px;
-  top: -8px;
-}
-
-.heartbeat::after {
-  right: 10px;
-  top: -4px;
-}
-
-/* Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-/* Tablet Styles */
-@media (max-width: 1024px) {
-  .container {
-    padding: 18px 24px;
-    gap: 20px;
-  }
-
-  .whatsappText,
-  .orderText {
-    font-size: 28px;
-  }
-
-  .yayText {
-    font-size: 20px;
-  }
-
-  .normalText {
-    font-size: 16px;
-  }
-
-  .toText {
-    font-size: 20px;
-  }
-
-  .illustration {
-    width: 220px;
-    height: 120px;
-  }
-
-  .whatsappButton {
-    padding: 14px 22px;
-    font-size: 14px;
-  }
-
-  .buttonText {
-    font-size: 13px;
-  }
-}
-
-/* Mobile Styles */
+/* Responsive */
 @media (max-width: 768px) {
   .container {
-    flex-wrap: wrap;
-    padding: 16px 20px;
-    gap: 16px;
-    justify-content: center;
-  }
-
-  .logoSection {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .textSection {
-    width: 100%;
+    flex-direction: column;
     text-align: center;
-    align-items: center;
-    order: 2;
   }
 
   .buttonSection {
     width: 100%;
     display: flex;
     justify-content: center;
-    order: 3;
-  }
-
-  .illustration {
-    width: 100%;
-    max-width: 280px;
-    height: 120px;
-    order: 4;
-  }
-
-  .whatsappText,
-  .orderText {
-    font-size: 24px;
-  }
-
-  .yayText {
-    font-size: 18px;
-  }
-
-  .normalText {
-    font-size: 14px;
-  }
-
-  .toText {
-    font-size: 18px;
   }
 
   .whatsappButton {
-    padding: 14px 24px;
     width: 100%;
-    max-width: 400px;
+    max-width: 320px;
     justify-content: center;
   }
 
-  .character {
-    bottom: 15px;
-  }
-
-  .characterHead {
-    width: 35px;
-    height: 35px;
-  }
-
-  .characterBody {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 12px 16px;
-  }
-
-  .logo {
-    width: 42px;
-    height: 42px;
-  }
-
-  .brandName {
-    font-size: 14px;
-  }
-
-  .pharmacyText {
-    font-size: 12px;
-  }
-
-  .whatsappText,
-  .orderText {
-    font-size: 20px;
-  }
-
-  .yayText {
-    font-size: 16px;
-  }
-
-  .normalText {
-    font-size: 13px;
-  }
-
-  .toText {
-    font-size: 16px;
-  }
-
-  .ctaText {
-    gap: 6px;
-  }
-
-  .whatsappButton {
-    padding: 12px 20px;
-    font-size: 13px;
-  }
-
-  .buttonText {
-    font-size: 12px;
-  }
-
-  .whatsappIcon {
-    width: 20px;
-    height: 20px;
-  }
-
   .illustration {
-    height: 100px;
-  }
-
-  .characterHead {
-    width: 30px;
-    height: 30px;
-  }
-
-  .characterBody {
-    width: 40px;
-    height: 40px;
-  }
-
-  .medicalCross {
-    width: 28px;
-    height: 28px;
-    font-size: 20px;
+    order: -1;
   }
 }
