@@ -218,6 +218,7 @@ const PharmacyProductGrid: FC = () => {
 
   return (
     <section className={styles.container}>
+        <h2 className={styles.title}>Most Popular Products</h2>
       <div className={styles.productGrid}>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
