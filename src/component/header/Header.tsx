@@ -1,0 +1,100 @@
+import React, { useState } from "react";
+import styles from "./Header.module.css";
+
+interface HeaderProps {
+  gstNumber?: string;
+  phoneNumber?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({
+  gstNumber = "06AKVPA3425A1ZM",
+  phoneNumber = "08054798659",
+}) => {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    console.log("Search query:", query);
+  };
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.inner}>
+        {/* === Top Section === */}
+        <div className={styles.top}>
+          <div className={styles.logoGroup}>
+            <div className={styles.logoIcon}>
+              <svg
+                viewBox="0 0 40 40"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 5L15 15L5 20L15 25L20 35L25 25L35 20L25 15L20 5Z"
+                  fill="white"
+                  stroke="white"
+                  strokeWidth="1.5"
+                />
+              </svg>
+              <span className={styles.logoBadge}>VKAN</span>
+            </div>
+            <h1 className={styles.logoText}>VKAN HEALTHCARE</h1>
+          </div>
+
+          <div className={styles.contact}>
+            <div>
+              <span className={styles.label}>Talk to us</span>
+              <a href={`tel:${phoneNumber}`} className={styles.value}>
+                {phoneNumber}
+              </a>
+            </div>
+            <div>
+              <span className={styles.label}>GST</span>
+              <span className={styles.value}>{gstNumber}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* === Navigation & Search === */}
+        <nav className={styles.navbar} aria-label="Main Navigation">
+          <ul className={styles.navList}>
+            <li><a href="#home">Home Page</a></li>
+            <li><a href="#company">Company Profile</a></li>
+            <li><a href="#products">Our Products</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+
+          <form className={styles.search} onSubmit={handleSearch} role="search">
+            <input
+              type="search"
+              placeholder="Search products..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Search products"
+            />
+            <button type="submit" aria-label="Search">
+              <svg
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="2" />
+                <path
+                  d="M12.5 12.5L17 17"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </form>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

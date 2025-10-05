@@ -1,0 +1,190 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+  opacity: 0.15;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  transform: rotate(-45deg);
+  overflow: hidden;
+}
+
+.watermark span {
+  white-space: nowrap;
+  letter-spacing: 0.5em;
+  text-align: center;
+}
+
+.productName {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background: #333;
+  color: #fff;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Tablet (3 columns) */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+}
+
+/* Tablet Small (2 columns) */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    padding: 12px;
+  }
+  
+  .productName {
+    font-size: 0.8125rem;
+    min-height: 36px;
+  }
+  
+  .button {
+    font-size: 0.8125rem;
+    padding: 7px 14px;
+  }
+}
+
+/* Mobile (1 column) */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .container {
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 1.125rem;
+    margin-bottom: 16px;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .productName {
+    font-size: 0.875rem;
+    min-height: auto;
+  }
+  
+  .button {
+    font-size: 0.875rem;
+    padding: 10px 20px;
+    width: 100%;
+  }
+}
+
+/* High-density displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .card {
+    border-width: 0.5px;
+  }
+}

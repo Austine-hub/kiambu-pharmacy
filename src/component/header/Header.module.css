@@ -1,0 +1,210 @@
+/* Header.module.css */
+
+/* === Global Header Container === */
+.header {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: #fff;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inner {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+/* === Top Section === */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoIcon {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.logoBadge {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.logoText {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* === Navigation Section === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+  padding: 0 1.5rem;
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navList li a {
+  display: block;
+  padding: 1rem 1.75rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.25s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navList li:last-child a {
+  border-right: none;
+}
+
+.navList li a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* === Search Bar === */
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0.75rem 0;
+}
+
+.search input {
+  width: 260px;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  color: #111;
+  font-size: 0.9rem;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.search input::placeholder {
+  color: #888;
+}
+
+.search input:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+.search button {
+  position: absolute;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.search button:hover {
+  color: #1d4ed8;
+}
+
+/* === Responsive Layout === */
+@media (max-width: 1024px) {
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact {
+    align-items: flex-start;
+  }
+
+  .logoText {
+    font-size: 1.8rem;
+  }
+
+  .navList li a {
+    padding: 0.9rem 1.25rem;
+  }
+
+  .search input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navList {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navList li a {
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .search {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
