@@ -206,3 +206,32 @@
   }
 }
 
+
+
+/* ===== MOBILE OPTIMIZATION (Hide all except WhatsApp button) ===== */
+@media (max-width: 768px) {
+  .leftSection,
+  .illustration {
+    display: none !important; /* Hide logo, brand text, and illustration */
+  }
+
+  .container {
+    justify-content: center; /* Center the button horizontally */
+    padding: 0.8rem 1rem;
+  }
+
+  .buttonSection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .whatsappButton {
+    width: 90%;
+    max-width: 360px;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+}

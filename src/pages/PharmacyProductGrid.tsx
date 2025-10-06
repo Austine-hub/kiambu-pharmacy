@@ -28,16 +28,13 @@ interface PaginationProps {
 // 🔹 ProductCard Component
 // -----------------------------
 const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
-  const discountPercent = useMemo(
-    () =>
-      Math.round(
-        ((product.originalPrice - product.price) / product.originalPrice) * 100
-      ),
-    [product.price, product.originalPrice]
-  );
+  const discountPercent = useMemo(() => {
+    const diff = product.originalPrice - product.price;
+    return Math.max(0, Math.round((diff / product.originalPrice) * 100));
+  }, [product.price, product.originalPrice]);
 
   return (
-    <article className={styles.productCard}>
+    <article className={styles.productCard} role="listitem">
       <div className={styles.productImageContainer}>
         <img
           src={
@@ -49,7 +46,9 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
           loading="lazy"
         />
         {product.buyXGetY && (
-          <span className={styles.badgeBuyXGetY}>{product.buyXGetY}</span>
+          <span className={styles.badgeBuyXGetY} aria-label="Special offer">
+            {product.buyXGetY}
+          </span>
         )}
       </div>
 
@@ -59,14 +58,21 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
         </h3>
 
         <div className={styles.priceContainer}>
-          <span className={styles.currentPrice}>₹{product.price.toFixed(2)}</span>
-          <span className={styles.originalPrice}>
+          <span className={styles.currentPrice} aria-label="Current price">
+            ₹{product.price.toFixed(2)}
+          </span>
+          <span
+            className={styles.originalPrice}
+            aria-label={`Original price ${product.originalPrice.toFixed(2)}`}
+          >
             MRP ₹{product.originalPrice.toFixed(2)}
           </span>
-          <span className={styles.discount}>{discountPercent}% off</span>
+          <span className={styles.discount} aria-label={`${discountPercent}% off`}>
+            {discountPercent}% off
+          </span>
         </div>
 
-        <button type="button" className={styles.addButton}>
+        <button type="button" className={styles.addButton} aria-label="Add to cart">
           Add
         </button>
       </div>
@@ -92,11 +98,11 @@ const Pagination: FC<PaginationProps> = ({
     }
 
     if (currentPage <= 4) {
-      pages.push(...[1, 2, 3, 4, 5], "...", totalPages);
+      pages.push(...[1, 2, 3, 4, 5], "…", totalPages);
     } else if (currentPage >= totalPages - 3) {
       pages.push(
         1,
-        "...",
+        "…",
         totalPages - 4,
         totalPages - 3,
         totalPages - 2,
@@ -106,11 +112,11 @@ const Pagination: FC<PaginationProps> = ({
     } else {
       pages.push(
         1,
-        "...",
+        "…",
         currentPage - 1,
         currentPage,
         currentPage + 1,
-        "...",
+        "…",
         totalPages
       );
     }
@@ -119,7 +125,7 @@ const Pagination: FC<PaginationProps> = ({
   }, [currentPage, totalPages]);
 
   return (
-    <nav className={styles.pagination} aria-label="Pagination">
+    <nav className={styles.pagination} aria-label="Pagination Navigation">
       <button
         className={styles.paginationArrow}
         onClick={() => onPageChange(currentPage - 1)}
@@ -130,9 +136,9 @@ const Pagination: FC<PaginationProps> = ({
       </button>
 
       {pageNumbers.map((page, idx) =>
-        page === "..." ? (
+        page === "…" ? (
           <span key={`ellipsis-${idx}`} className={styles.paginationEllipsis}>
-            ...
+            …
           </span>
         ) : (
           <button
@@ -166,7 +172,6 @@ const Pagination: FC<PaginationProps> = ({
 const PharmacyProductGrid: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // ⚡ Simulated product data (minimum 6 items per page)
   const products: Product[] = [
     {
       id: 1,
@@ -185,30 +190,10 @@ const PharmacyProductGrid: FC = () => {
       image:
         "https://images.unsplash.com/photo-1615486511262-2fec7c9e5d9e?w=300&h=300&fit=crop",
     },
-    {
-      id: 3,
-      name: "Digital Thermometer",
-      price: 199.0,
-      originalPrice: 399.0,
-    },
-    {
-      id: 4,
-      name: "First Aid Kit - 50 Items",
-      price: 850.0,
-      originalPrice: 1200.0,
-    },
-    {
-      id: 5,
-      name: "Hand Sanitizer (500ml)",
-      price: 149.0,
-      originalPrice: 250.0,
-    },
-    {
-      id: 6,
-      name: "Reusable Face Mask (Pack of 3)",
-      price: 299.0,
-      originalPrice: 450.0,
-    },
+    { id: 3, name: "Digital Thermometer", price: 199.0, originalPrice: 399.0 },
+    { id: 4, name: "First Aid Kit - 50 Items", price: 850.0, originalPrice: 1200.0 },
+    { id: 5, name: "Hand Sanitizer (500ml)", price: 149.0, originalPrice: 250.0 },
+    { id: 6, name: "Reusable Face Mask (Pack of 3)", price: 299.0, originalPrice: 450.0 },
   ];
 
   const handlePageChange = (page: number) => {
@@ -217,9 +202,12 @@ const PharmacyProductGrid: FC = () => {
   };
 
   return (
-    <section className={styles.container}>
-        <h2 className={styles.title}>Most Popular Products</h2>
-      <div className={styles.productGrid}>
+    <section className={styles.container} aria-labelledby="popular-products">
+      <h2 id="popular-products" className={styles.title}>
+        Most Popular Products
+      </h2>
+
+      <div className={styles.productGrid} role="list">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

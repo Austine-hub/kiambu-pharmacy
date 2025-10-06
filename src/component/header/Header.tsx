@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Menu, X } from "lucide-react"; // modern icons
 import styles from "./Header.module.css";
 
 interface HeaderProps {
@@ -6,10 +7,9 @@ interface HeaderProps {
   phoneNumber?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({
-    phoneNumber = "0796787207",
-}) => {
+const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
   const [query, setQuery] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,17 +42,28 @@ const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className={styles.contact}>
-            <div>
-              <span className={styles.label}>Talk to us </span> <br></br>
-                <strong>CALL</strong> <a href={`tel:${phoneNumber}`} className={styles.value}>
-                {phoneNumber}
-              </a>
-            </div>
+            <span className={styles.label}>Talk to us </span>
+            <strong>CALL</strong>{" "}
+            <a href={`tel:${phoneNumber}`} className={styles.value}>
+              {phoneNumber}
+            </a>
           </div>
+
+          {/* Mobile Toggle Button */}
+          <button
+            className={styles.menuToggle}
+            aria-label="Toggle navigation menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
         {/* === Navigation & Search === */}
-        <nav className={styles.navbar} aria-label="Main Navigation">
+        <nav
+          className={`${styles.navbar} ${menuOpen ? styles.navOpen : ""}`}
+          aria-label="Main Navigation"
+        >
           <ul className={styles.navList}>
             <li><a href="#home">Home Page</a></li>
             <li><a href="#company">About Us</a></li>

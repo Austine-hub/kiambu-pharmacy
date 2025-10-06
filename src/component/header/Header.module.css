@@ -87,6 +87,7 @@
   background: rgba(255, 255, 255, 0.05);
   flex-wrap: wrap;
   padding: 0 1.5rem;
+  transition: max-height 0.3s ease-in-out;
 }
 
 .navList {
@@ -161,16 +162,24 @@
   color: #1d4ed8;
 }
 
+/* === Mobile Menu Toggle === */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 /* === Responsive Layout === */
 @media (max-width: 1024px) {
   .top {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
     gap: 1rem;
   }
 
   .contact {
-    align-items: flex-start;
+    display: none;
   }
 
   .logoText {
@@ -187,24 +196,37 @@
 }
 
 @media (max-width: 768px) {
+  .menuToggle {
+    display: block;
+  }
+
   .navbar {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .navOpen {
+    max-height: 600px; /* enough to show menu */
+    padding: 1rem;
   }
 
   .navList {
     flex-direction: column;
     width: 100%;
+    text-align: center;
   }
 
   .navList li a {
-    text-align: center;
-    border-right: none;
+    border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
   }
 
   .search {
     width: 100%;
     margin: 1rem 0;
+    justify-content: center;
   }
 }
