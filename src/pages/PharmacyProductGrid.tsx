@@ -1,6 +1,14 @@
-import { useState, useMemo, memo } from "react";
-import type { FC } from "react";
+import { useState, useMemo, memo, FC } from "react";
 import styles from "./PharmacyProductGrid.module.css";
+
+// Local Images (add more as needed)
+import pic1 from "./../assets/system/cns.png";
+import pic2 from "./../assets/system/resp.png";
+import pic3 from "./../assets/system/cardiac.png";
+import pic4 from "./../assets/system/git.png";
+import pic5 from "./../assets/system/gut.png";
+import pic6 from "./../assets/system/msk.png";
+import pic7 from "./../assets/system/allergy.png";
 
 // -----------------------------
 // 🔹 Types
@@ -35,12 +43,10 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
 
   return (
     <article className={styles.productCard} role="listitem">
+      {/* Product Image */}
       <div className={styles.productImageContainer}>
         <img
-          src={
-            product.image ||
-            "https://via.placeholder.com/300x300.png?text=Product+Image"
-          }
+          src={product.image ?? pic7} // fallback local image
           alt={product.name}
           className={styles.productImage}
           loading="lazy"
@@ -52,6 +58,7 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
         )}
       </div>
 
+      {/* Product Info */}
       <div className={styles.productInfo}>
         <h3 className={styles.productName} title={product.name}>
           {product.name}
@@ -63,16 +70,25 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
           </span>
           <span
             className={styles.originalPrice}
-            aria-label={`Original price ${product.originalPrice.toFixed(2)}`}
+            aria-label={`Original price ₹${product.originalPrice.toFixed(2)}`}
           >
             MRP ₹{product.originalPrice.toFixed(2)}
           </span>
-          <span className={styles.discount} aria-label={`${discountPercent}% off`}>
-            {discountPercent}% off
-          </span>
+          {discountPercent > 0 && (
+            <span
+              className={styles.discount}
+              aria-label={`${discountPercent}% discount`}
+            >
+              {discountPercent}% off
+            </span>
+          )}
         </div>
 
-        <button type="button" className={styles.addButton} aria-label="Add to cart">
+        <button
+          type="button"
+          className={styles.addButton}
+          aria-label={`Add ${product.name} to cart`}
+        >
           Add
         </button>
       </div>
@@ -178,8 +194,7 @@ const PharmacyProductGrid: FC = () => {
       name: "Apollo Pharmacy Compressor Nebulizer, 1 Count",
       price: 1517.9,
       originalPrice: 2399.0,
-      image:
-        "https://images.unsplash.com/photo-1584362917165-526a968579e8?w=300&h=300&fit=crop",
+      image: pic1,
       buyXGetY: "Buy 2 • Rs.1,990",
     },
     {
@@ -187,13 +202,12 @@ const PharmacyProductGrid: FC = () => {
       name: "Omron Blood Pressure Monitor HEM-7121-J, 1 Count",
       price: 1750.8,
       originalPrice: 2290.0,
-      image:
-        "https://images.unsplash.com/photo-1615486511262-2fec7c9e5d9e?w=300&h=300&fit=crop",
+      image: pic2,
     },
-    { id: 3, name: "Digital Thermometer", price: 199.0, originalPrice: 399.0 },
-    { id: 4, name: "First Aid Kit - 50 Items", price: 850.0, originalPrice: 1200.0 },
-    { id: 5, name: "Hand Sanitizer (500ml)", price: 149.0, originalPrice: 250.0 },
-    { id: 6, name: "Reusable Face Mask (Pack of 3)", price: 299.0, originalPrice: 450.0 },
+    { id: 3, name: "Digital Thermometer", price: 199.0, originalPrice: 399.0, image: pic3 },
+    { id: 4, name: "First Aid Kit - 50 Items", price: 850.0, originalPrice: 1200.0, image: pic4 },
+    { id: 5, name: "Hand Sanitizer (500ml)", price: 149.0, originalPrice: 250.0, image: pic5 },
+    { id: 6, name: "Reusable Face Mask (Pack of 3)", price: 299.0, originalPrice: 450.0, image: pic6 },
   ];
 
   const handlePageChange = (page: number) => {

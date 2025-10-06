@@ -1,32 +1,41 @@
 import React from "react";
 import styles from "./StatsComponent.module.css";
 
+interface Stat {
+  label: string;
+  value: string;
+  description: string;
+}
+
 const StatsComponent: React.FC = () => {
-  const stats = [
-    { label: "Present in", value: "6+", description: "Countries" },
-    { label: "Over", value: "650+", description: "Clients" },
-    { label: "Close to", value: "18+", description: "Manufacturing Areas" },
-    { label: "Close to", value: "20+", description: "R&D Sites" },
+  const stats: Stat[] = [
+    { label: "Present in", value: "16+", description: "Counties Nationwide" },
+    { label: "Trusted by", value: "1650+", description: "National clients" },
+    { label: "Operating across", value: "18+", description: "rural areas" },
+    { label: "Supporting Health and Managing Sickness with", value: "120+", description: "cases managed everyday" },
   ];
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container} aria-labelledby="stats-heading">
       <header className={styles.header}>
-        <h1 className={styles.title}>
-          <span className={styles.titleHighlight}>ERNST</span> in the World
+        <h1 id="stats-heading" className={styles.title}>
+          <span className={styles.titleHighlight}>ERNST</span> in the Nation
         </h1>
+        <p className={styles.subtitle}>
+          A National  presence built on trust, innovation, and collaboration.
+        </p>
       </header>
 
       <div className={styles.statsGrid}>
-        {stats.map((stat, index) => (
-          <div key={index} className={styles.statCard}>
-            <div className={styles.statLabel}>{stat.label}</div>
-            <div className={styles.statValue}>{stat.value}</div>
-            <div className={styles.statDescription}>{stat.description}</div>
-          </div>
+        {stats.map((stat) => (
+          <article key={stat.label} className={styles.statCard}>
+            <p className={styles.statLabel}>{stat.label}</p>
+            <p className={styles.statValue}>{stat.value}</p>
+            <p className={styles.statDescription}>{stat.description}</p>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

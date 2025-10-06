@@ -2,6 +2,24 @@ import React, { useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // modern icons
 import styles from "./ShopByCategories.module.css";
 
+
+// Local Images (add more as needed)
+import pic1 from "./../assets/system/cns.png";
+import pic2 from "./../assets/system/resp.png";
+import pic3 from "./../assets/system/cardiac.png";
+import pic4 from "./../assets/system/git.png";
+import pic5 from "./../assets/system/gut.png";
+import pic6 from "./../assets/system/msk.png";
+import pic7 from "./../assets/system/allergy.png";
+import pic8 from "./../assets/system/skin.png";
+
+import pic9 from "./../assets/system/heartburn.png";
+import pic10 from "./../assets/system/cough.png";
+import pic11 from "./../assets/system/vitamins.png";
+import pic12 from "./../assets/system/stomach-ache.png";
+import pic13 from "./../assets/system/supplements.png";
+
+
 interface Category {
   id: string;
   name: string;
@@ -10,14 +28,18 @@ interface Category {
 
 const ShopByCategories: React.FC = () => {
   const categories: Category[] = [
-    { id: "1", name: "Must haves", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=200&h=200&fit=crop" },
-    { id: "2", name: "Skin care", image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200&h=200&fit=crop" },
-    { id: "3", name: "Heart care", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&h=200&fit=crop" },
-    { id: "4", name: "Vitamins & supplements", image: "https://images.unsplash.com/photo-1550572017-4a6f6857e80e?w=200&h=200&fit=crop" },
-    { id: "5", name: "Homeopathy care", image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=200&h=200&fit=crop" },
-    { id: "6", name: "Ayurvedic care", image: "https://images.unsplash.com/photo-1609840114035-3c981c6d3c94?w=200&h=200&fit=crop" },
-    { id: "7", name: "Sports nutrition", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200&h=200&fit=crop" },
-    { id: "8", name: "Health food & drinks", image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=200&h=200&fit=crop" },
+    { id: "1", name: "heartburn", image: pic1 },
+    { id: "2", name: "Skin care", image: pic8 },
+    { id: "3", name: "Heart care", image: pic3 },
+    { id: "4", name: "stomachache", image: pic12 },
+    { id: "5", name: "Heartburn", image: pic9 },
+    { id: "6", name: "Homeopathy care", image: pic2 },
+    { id: "7", name: "Ayurvedic care", image: pic5 },
+    { id: "8", name: "Sports nutrition", image: pic6 },
+    { id: "9", name: "Health food & drinks", image: pic7 },
+    { id: "10", name: "Cough", image: pic10 }, 
+    { id: "11", name: "Vitamins", image: pic11 },    
+    { id: "12", name: "Supplements", image: pic13 },
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
