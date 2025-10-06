@@ -48,7 +48,7 @@ const ProductGrid: React.FC = () => {
 
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>Most Popular Products</h2>
+      <h2 className={styles.title}>Most Popular Presentations </h2>
 
       <div className={styles.grid}>
         {products.map((product) => (
@@ -69,7 +69,7 @@ const ProductGrid: React.FC = () => {
 
             <h3 className={styles.productName}>{product.name}</h3>
             <button className={styles.button} aria-label={`Get quote for ${product.name}`}>
-              Get a Price / Quote
+              Consult us
             </button>
           </article>
         ))}

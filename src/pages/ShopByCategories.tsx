@@ -28,18 +28,19 @@ interface Category {
 
 const ShopByCategories: React.FC = () => {
   const categories: Category[] = [
-    { id: "1", name: "heartburn", image: pic1 },
-    { id: "2", name: "Skin care", image: pic8 },
-    { id: "3", name: "Heart care", image: pic3 },
-    { id: "4", name: "stomachache", image: pic12 },
+    { id: "1", name: "Headache", image: pic1 },
+    { id: "2", name: "Breathing Problem", image: pic2 },
+    { id: "3", name: "Pain Medication", image: pic3 },
+    { id: "4", name: "IBS", image: pic12 },
     { id: "5", name: "Heartburn", image: pic9 },
-    { id: "6", name: "Homeopathy care", image: pic2 },
-    { id: "7", name: "Ayurvedic care", image: pic5 },
-    { id: "8", name: "Sports nutrition", image: pic6 },
-    { id: "9", name: "Health food & drinks", image: pic7 },
+    { id: "6", name: "Skin Care", image: pic8 },
+    { id: "7", name: "UTI treatment", image: pic5 },
+    { id: "8", name: "Body Pain", image: pic6 },
+    { id: "9", name: "Allergy Drugs", image: pic7 },
     { id: "10", name: "Cough", image: pic10 }, 
     { id: "11", name: "Vitamins", image: pic11 },    
     { id: "12", name: "Supplements", image: pic13 },
+    { id: "13", name: "Digestive Issues", image: pic4 },
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
