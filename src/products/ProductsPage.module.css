@@ -3,82 +3,12 @@
  * Unified page styling for all product-related sections.
  */
 
-.productsPage {
-  width: 100%;
-  background-color: var(--page-bg, #fafafa);
-  color: var(--text-primary, #222);
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  font-family: system-ui, Arial, sans-serif;
-}
 
-.header {
+ .title {
   text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.title {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-.section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.sectionTitle {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--accent, #007bff);
-}
-
-.cardPreview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Light / Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page-bg: #121212;
-    --text-primary: #eaeaea;
-    --accent: #4da3ff;
-  }
-
-  .section {
-    background-color: #1f1f1f;
-    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
-  }
-
-  .subtitle {
-    color: #bbb;
-  }
-}
-
-/* Responsive spacing */
-@media (max-width: 768px) {
-  .productsPage {
-    gap: 2rem;
-    padding: 1.5rem 0.75rem;
-  }
-  .section {
-    padding: 0.75rem;
-  }
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: -0.02em;
 }

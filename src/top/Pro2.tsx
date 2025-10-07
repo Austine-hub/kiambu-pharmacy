@@ -1,6 +1,24 @@
 import React from "react";
 import styles from "./Pro2.module.css";
 
+
+
+// Local Images (add more as needed)
+import pic1 from "./../assets/drugs/cardiac/amlodipine.png";
+import pic2 from "./../assets/drugs/cardiac/atenolol.png";
+import pic3 from "./../assets/drugs/cardiac/atorvastatin.png";
+import pic4 from "./../assets/drugs/cardiac/carvedilol.png";
+import pic5 from "./../assets/drugs/cardiac/clonidine.png";
+import pic6 from "./../assets/drugs/cardiac/ezetimibe.png";
+import pic7 from "./../assets/drugs/cardiac/fenofibrate.png";
+import pic8 from "./../assets/drugs/cardiac/furosemide.png";
+import pic9 from "./../assets/drugs/cardiac/hydrochlorothiazide.png";
+import pic10 from "./../assets/drugs/cardiac/lisinopril.png";
+import pic11 from "./../assets/drugs/cardiac/losartan_HCTZ.png";
+import pic12 from "./../assets/drugs/cardiac/Metoprolol.png";
+import pic13 from "./../assets/drugs/cardiac/potassium-chloride.png";
+import pic14 from "./../assets/drugs/cardiac/propranolol.png";
+import pic15 from "./../assets/drugs/cardiac/spironolactone.png";
 // --- 1. Types ---
 interface Product {
   id: number;
@@ -10,18 +28,21 @@ interface Product {
 
 // --- 2. Mock Data ---
 const MOCK_PRODUCTS: Product[] = [
-  { id: 1, name: "Dr. Jill's Arch Snapper (3/4\" Arch Support)", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+1" },
-  { id: 2, name: "Dr. Jill's Suede Adjustable Crest Pads (4pk)", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+2" },
-  { id: 3, name: "Dr. Jill's Premier All Gel Heel Cups", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+3" },
-  { id: 4, name: "Dr. Jill's Gel Dancer's Pads", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+4" },
-  { id: 5, name: "Dr. Jill's Tailor's Bunion Pad", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+5" },
-  { id: 6, name: "Dr. Jill's Gel Crest Pads", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+6" },
-  { id: 7, name: "Dr. Jill's Gel Bunion w/loop", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+7" },
-  { id: 8, name: "Dr. Jill's Poron Blue Met Pad", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+8" },
-  { id: 9, name: "Dr. Jill's Premier Gel Bunion Pads w/loop (3pk)", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+9" },
-  { id: 10, name: "Dr. Jill's Premier Gel Hourglass Tapered Toe Separator (Extra Wide) (4pk)", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+10" },
-  { id: 11, name: "Dr. Jill's Premier Gel Adjustable Metatarsal Cushion/Crest Pad, P-6", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+11" },
-  { id: 12, name: "Darco All Purpose Boot", imageUrl: "https://placehold.co/150x150/ffffff/000?text=Product+12" },
+  { id: 1, name: "Amlodipine", imageUrl: pic1 },
+  { id: 2, name: "Atenolol", imageUrl: pic2 },
+  { id: 3, name: "Artovostatin", imageUrl: pic3 },
+  { id: 4, name: "Carvediol", imageUrl: pic4 },
+  { id: 5, name: "Clonidine", imageUrl: pic5 },
+  { id: 6, name: "Ezetimibe", imageUrl: pic6 },
+  { id: 7, name: "Fenofibrate", imageUrl: pic7 },
+  { id: 8, name: "Furosemide", imageUrl: pic8 },
+  { id: 9, name: "Hydrochlorothiazide", imageUrl: pic9 },
+  { id: 10, name: "Lisinopril", imageUrl: pic10 },
+  { id: 11, name: "Losartan_HCTZ", imageUrl: pic11 },
+  { id: 12, name: "Metoprolol", imageUrl: pic12 },
+  { id: 13, name: "Potassium-chloride", imageUrl: pic13},
+  { id: 14, name: "Propranolol", imageUrl: pic14 },
+   { id: 15, name: "Spironolactone", imageUrl: pic15 },
 ];
 
 // --- 3. Components ---

@@ -1,5 +1,6 @@
 // src/components/ProductsPage.tsx
 import React from "react";
+import styles from "./ProductsPage.module.css"
 
 // Import your existing product-related components
 import Pro2 from "../top/Pro2";
@@ -13,7 +14,7 @@ const ProductsPage: React.FC = () => {
   return (
     <div>
       <section>
-        <h2>Best Selling Products</h2>
+        <h2 className={styles.title}>Best Selling Products</h2>
         <Pro2 />
       </section>
 
@@ -31,12 +32,7 @@ const ProductsPage: React.FC = () => {
         <ProductsGrid />
       </section>
 
-      <section>
-        <h2>All Products</h2>
-        <ProductGrid />
-      </section>
-
-      <section>
+     <section>
         <h2>Single Product Preview</h2>
         <Products />
       </section>
