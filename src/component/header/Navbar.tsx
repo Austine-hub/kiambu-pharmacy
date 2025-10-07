@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar: React.FC = () => {
@@ -9,13 +10,13 @@ const Navbar: React.FC = () => {
   const toggleCategoryMenu = () => setIsCategoryOpen((prev) => !prev);
 
   const mainLinks = [
-    { label: "Buy Medicines", href: "#buy-medicines", active: true },
-    { label: "General Consultation", href: "#find-doctors" },
-    { label: "Lab Tests", href: "#lab-tests" },
-    { label: "Mother & Child Health", href: "#circle-membership" },
-    { label: "VCT Services", href: "#health-records" },
-    { label: "Radiological Services", href: "#radiology", badge: "New" },
-    { label: "Reproductive Health", href: "#buy-insurance", badge: "New" },
+    { label: "Buy Medicines", path: "/buy-medicines" },
+    { label: "General Consultation", path: "/consultation" },
+    { label: "Lab Tests", path: "/lab-tests" },
+    { label: "Mother & Child Health", path: "/mother-child" },
+    { label: "VCT Services", path: "/vct-services" },
+    { label: "Radiological Services", path: "/radiology", badge: "New" },
+    { label: "Reproductive Health", path: "/reproductive-health", badge: "New" },
   ];
 
   const categories = [
@@ -35,6 +36,7 @@ const Navbar: React.FC = () => {
       <div className={styles.container}>
         {/* === Top Navigation === */}
         <div className={styles.topNav}>
+          {/* Left Hamburger */}
           <button
             className={`${styles.menuToggle} ${styles.leftToggle}`}
             onClick={toggleMainMenu}
@@ -46,24 +48,31 @@ const Navbar: React.FC = () => {
             <span className={styles.bar}></span>
           </button>
 
+          {/* Main Navigation Links */}
           <ul
             className={`${styles.mainLinks} ${
               isMainMenuOpen ? styles.active : ""
             }`}
+            role="menubar"
           >
-            {mainLinks.map(({ label, href, badge, active }) => (
-              <li
-                key={label}
-                className={`${styles.navItem} ${active ? styles.active : ""}`}
-              >
-                <a href={href}>
+            {mainLinks.map(({ label, path, badge }) => (
+              <li key={label} className={styles.navItem} role="none">
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    `${styles.navLink} ${isActive ? styles.active : ""}`
+                  }
+                  role="menuitem"
+                  onClick={() => setIsMainMenuOpen(false)}
+                >
                   {label}
                   {badge && <span className={styles.badge}>{badge}</span>}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
 
+          {/* Right Hamburger for categories */}
           <button
             className={`${styles.menuToggle} ${styles.rightToggle}`}
             onClick={toggleCategoryMenu}
@@ -74,14 +83,32 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* === Bottom Navigation === */}
-        <div className={`${styles.bottomNav} ${isCategoryOpen ? styles.active : ""}`}>
-          <ul className={styles.categoryLinks}>
-            {categories.map((cat) => (
-              <li key={cat} className={styles.bottomItem}>
-                <a href={`#${cat.toLowerCase().replace(/\s+/g, "-")}`}>{cat}</a>
-              </li>
-            ))}
+        {/* === Bottom Navigation (Categories) === */}
+        <div
+          className={`${styles.bottomNav} ${
+            isCategoryOpen ? styles.active : ""
+          }`}
+        >
+          <ul className={styles.categoryLinks} role="menubar">
+            {categories.map((cat) => {
+              const path = `/category/${cat
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`;
+              return (
+                <li key={cat} className={styles.bottomItem} role="none">
+                  <NavLink
+                    to={path}
+                    className={({ isActive }) =>
+                      `${styles.bottomLink} ${isActive ? styles.active : ""}`
+                    }
+                    role="menuitem"
+                    onClick={() => setIsCategoryOpen(false)}
+                  >
+                    {cat}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -90,4 +117,5 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
 

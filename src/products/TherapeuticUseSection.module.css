@@ -1,0 +1,204 @@
+/* ============================
+   THEME VARIABLES & RESET
+============================ */
+:root {
+  --blue-bg: #e0f2fe;
+  --yellow-bg: #fffbe0;
+  --green-bg: #e0f8e0;
+  --brown-bg: #f5e0d3;
+  --pink-bg: #fee0f8;
+  --red-bg: #ffe0e0;
+
+  --text-color: #222;
+  --text-muted: #555;
+
+  --button-bg: #0077ff;
+  --button-hover-bg: #005fd1;
+  --button-text-color: #fff;
+
+  --border-radius-card: 14px;
+  --border-radius-button: 9999px;
+
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --transition-fast: 200ms ease;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #f9fafb;
+    --text-muted: #ccc;
+    --button-bg: #3897f0;
+    --button-hover-bg: #2d7cd4;
+    --shadow-light: 0 2px 10px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================
+   SECTION LAYOUT
+============================ */
+.therapeuticUseSection {
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: clamp(2rem, 5vw, 3rem);
+  max-width: 1200px;
+  margin-inline: auto;
+  color: var(--text-color);
+  text-align: center;
+  container-type: inline-size;
+  container-name: therapeutic;
+}
+
+/* ============================
+   TITLE
+============================ */
+.sectionTitle {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* ============================
+   CATEGORY GRID
+============================ */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.categoryCard {
+  position: relative;
+  border-radius: var(--border-radius-card);
+  padding: 1.25rem;
+  text-align: left;
+  height: 180px;
+  box-shadow: var(--shadow-light);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.categoryCard:focus,
+.categoryCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+.categoryName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+  position: relative;
+}
+
+/* ============================
+   ICONS
+============================ */
+.categoryIconContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.categoryIcon {
+  width: auto;
+  height: auto;
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+/* ============================
+   BUTTONS
+============================ */
+.categoryButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.categoryButton {
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius-button);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-light);
+}
+
+.categoryButton:hover,
+.categoryButton:focus-visible {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   RESPONSIVENESS
+============================ */
+@container therapeutic (max-width: 700px) {
+  .sectionTitle {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .categoryCard {
+    height: 160px;
+  }
+
+  .categoryIcon {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .categoryButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .categoryButton {
+    width: 80%;
+  }
+}
+
+@container therapeutic (max-width: 450px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categoryCard {
+    height: 140px;
+  }
+
+  .categoryIcon {
+    max-width: 70px;
+    max-height: 70px;
+  }
+
+  .categoryButton {
+    width: 95%;
+  }
+}
+
+/* Accessibility: Reduce motion for users with preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

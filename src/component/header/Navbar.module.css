@@ -49,7 +49,11 @@
   transition: all var(--transition);
 }
 
-.navItem a {
+.navItem {
+  margin: 0;
+}
+
+.navLink {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -62,11 +66,13 @@
   transition: color var(--transition), border-bottom var(--transition);
 }
 
-.navItem a:hover {
+.navLink:hover,
+.navLink:focus {
   color: var(--color-accent);
+  outline: none;
 }
 
-.active a {
+.active {
   border-bottom-color: var(--color-accent);
   font-weight: 600;
 }
@@ -86,7 +92,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
+  color: var(--color-text);
   transition: transform var(--transition);
 }
 
@@ -102,7 +109,6 @@
 .rightToggle {
   position: absolute;
   right: 12px;
-  top: 62px; /* slightly lower than the main toggle */
   color: var(--color-text);
 }
 
@@ -138,7 +144,7 @@
   padding: 0.5rem 0;
 }
 
-.bottomItem a {
+.bottomLink {
   display: block;
   padding: 14px 18px;
   color: #ffffff;
@@ -148,12 +154,14 @@
   transition: background-color var(--transition);
 }
 
-.bottomItem a:hover {
+.bottomLink:hover,
+.bottomLink:focus {
   background: rgba(255, 255, 255, 0.1);
+  outline: none;
 }
 
 /* === Responsive === */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .menuToggle {
     display: block;
   }
@@ -167,13 +175,14 @@
     width: 100%;
     background: var(--color-bg);
     box-shadow: var(--shadow-md);
+    z-index: 10;
   }
 
   .mainLinks.active {
     display: flex;
   }
 
-  .navItem a {
+  .navLink {
     width: 100%;
     justify-content: space-between;
     border-bottom: 1px solid #f3f4f6;
@@ -185,15 +194,15 @@
     padding: 0;
   }
 
-  .bottomItem a {
+  .bottomLink {
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
 @media (max-width: 480px) {
-  .navItem a,
-  .bottomItem a {
+  .navLink,
+  .bottomLink {
     font-size: 13px;
     padding: 12px 14px;
   }
@@ -203,7 +212,6 @@
   }
 
   .rightToggle {
-    top: 58px;
     font-size: 18px;
   }
 }

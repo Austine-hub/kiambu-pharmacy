@@ -18,7 +18,12 @@ import StatsComponent from "./outers/StatsComponent";
 // import TeamSection from "./components/TeamSection";
 // import WomenCare from "./pages/WomenCare";
 // import HealthConditions from "./outers/HealthConditions";
-// import Products from "./products/Products";
+
+import ProductsGrid from "./top/ProductsGrid";
+import Pro2 from "./top/Pro2";
+import ContactForm from "./products/ContactForm";
+import ProductsPage from "./products/ProductsPage";
+import AboutUs from "./top/AboutUs";
 
 /**
  * Accessible, Mobile-First, Modern App
@@ -53,10 +58,12 @@ const App: React.FC = () => {
             {/* <Route path="/team" element={<TeamSection />} /> */}
             {/* <Route path="/women" element={<WomenCare />} /> */}
             {/* <Route path="/health-conditions" element={<HealthConditions />} /> */}
-            {/* <Route path="/products" element={<Products />} /> */}
+            {<Route path="/products" element={<ProductsPage />} /> }
 
             {/* ✅ Direct access routes */}
-            <Route path="/grid" element={<ProductGrid />} />
+            <Route path="/grid" element={<Pro2/>} />
+            <Route path="/about-us" element={<AboutUs/>} />
+            <Route path="/contact" element={<ContactForm/>} />
             <Route path="/product-grid" element={<PharmacyProductGrid />} />
           </Routes>
         </main>

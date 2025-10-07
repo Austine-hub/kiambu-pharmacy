@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // modern icons
+import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import styles from "./Header.module.css";
 
 interface HeaderProps {
-  gstNumber?: string;
   phoneNumber?: string;
 }
 
@@ -17,6 +17,8 @@ const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
     console.log("Search query:", query);
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -28,6 +30,7 @@ const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
                 viewBox="0 0 40 40"
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
+                focusable="false"
               >
                 <path
                   d="M20 5L15 15L5 20L15 25L20 35L25 25L35 20L25 15L20 5Z"
@@ -49,10 +52,12 @@ const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
             </a>
           </div>
 
-          {/* Mobile Toggle Button */}
+          {/* Mobile Menu Toggle */}
           <button
             className={styles.menuToggle}
-            aria-label="Toggle navigation menu"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="main-navigation"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -61,23 +66,67 @@ const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
 
         {/* === Navigation & Search === */}
         <nav
+          id="main-navigation"
           className={`${styles.navbar} ${menuOpen ? styles.navOpen : ""}`}
           aria-label="Main Navigation"
         >
           <ul className={styles.navList}>
-            <li><a href="#home">Home Page</a></li>
-            <li><a href="#company">About Us</a></li>
-            <li><a href="#products">Our Products</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                }
+                onClick={closeMenu}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about-us"
+                className={({ isActive }) =>
+                  isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                }
+                onClick={closeMenu}
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                }
+                onClick={closeMenu}
+              >
+                Our Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                }
+                onClick={closeMenu}
+              >
+                Contact Us
+              </NavLink>
+            </li>
           </ul>
 
           <form className={styles.search} onSubmit={handleSearch} role="search">
+            <label htmlFor="site-search" className="sr-only">
+              Search products
+            </label>
             <input
+              id="site-search"
               type="search"
               placeholder="Search products..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search products"
             />
             <button type="submit" aria-label="Search">
               <svg
@@ -104,3 +153,4 @@ const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
 };
 
 export default Header;
+
