@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './VCT.module.css';
+import styles from './Vct.module.css';
 
 
 import person1 from "../assets/lab/virologist.png";
