@@ -11,12 +11,12 @@ const Navbar: React.FC = () => {
 
   const mainLinks = [
     { label: "Buy Medicines", path: "/buy-medicines" },
-    { label: "General Consultation", path: "/consultation" },
-    { label: "Lab Tests", path: "/lab-tests" },
+    { label: "General Consultation", path: "/consult" },
+    { label: "Lab Tests", path: "/lab" },
     { label: "Mother & Child Health", path: "/mother-child" },
-    { label: "VCT Services", path: "/vct-services" },
+    { label: "VCT Services", path: "/vct" },
     { label: "Radiological Services", path: "/radiology", badge: "New" },
-    { label: "Reproductive Health", path: "/reproductive-health", badge: "New" },
+    { label: "Reproductive Health", path: "/obgyn", badge: "New" },
   ];
 
   const categories = [

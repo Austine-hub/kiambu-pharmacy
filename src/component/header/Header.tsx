@@ -119,7 +119,6 @@ const Header: React.FC<HeaderProps> = ({ phoneNumber = "0796787207" }) => {
 
           <form className={styles.search} onSubmit={handleSearch} role="search">
             <label htmlFor="site-search" className="sr-only">
-              Search products
             </label>
             <input
               id="site-search"

@@ -19,11 +19,18 @@ import StatsComponent from "./outers/StatsComponent";
 // import WomenCare from "./pages/WomenCare";
 // import HealthConditions from "./outers/HealthConditions";
 
-import ProductsGrid from "./top/ProductsGrid";
+import DrugsWrapper from "./drugs/DrugsWrapper";
 import Pro2 from "./top/Pro2";
 import ContactForm from "./products/ContactForm";
 import ProductsPage from "./products/ProductsPage";
 import AboutUs from "./top/AboutUs";
+import GeneralConsultation from "./sections/GeneralConsultation";
+import LaboratorySection from "./sections/Lab";
+import MCHSection from "./sections/MCH";
+import RadiologySection from "./sections/Radiology";
+import ReproductiveHealth from "./sections/Obgyn";
+import VCTSection from "./sections/Vct";
+
 
 /**
  * Accessible, Mobile-First, Modern App
@@ -54,11 +61,15 @@ const App: React.FC = () => {
             />
 
             {/* ✅ Individual pages (future-ready) */}
-            {/* <Route path="/specialties" element={<MedicalSpecialties />} /> */}
-            {/* <Route path="/team" element={<TeamSection />} /> */}
-            {/* <Route path="/women" element={<WomenCare />} /> */}
-            {/* <Route path="/health-conditions" element={<HealthConditions />} /> */}
+             <Route path="/mother-child" element={<MCHSection/>} />
+            <Route path="/lab" element={<LaboratorySection/>} />
+            <Route path="/radiology" element={<RadiologySection/>} />
+            <Route path="/consult" element={<GeneralConsultation />} />
+            <Route path="/buy-medicines" element={<DrugsWrapper />} />
+             {<Route path="/obgyn" element={<ReproductiveHealth />} /> }
             {<Route path="/products" element={<ProductsPage />} /> }
+            <Route path="/vct" element={<VCTSection />} />
+
 
             {/* ✅ Direct access routes */}
             <Route path="/grid" element={<Pro2/>} />

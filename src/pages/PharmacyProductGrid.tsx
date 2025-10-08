@@ -1,7 +1,9 @@
-import { useState, useMemo, memo, FC } from "react";
+import { useState, useMemo, memo } from "react";
+import type { FC } from "react"; // ✅ type-only import for FC
+
 import styles from "./PharmacyProductGrid.module.css";
 
-// Local Images (add more as needed)
+// ✅ Local Images
 import pic1 from "./../assets/system/cns.png";
 import pic2 from "./../assets/system/resp.png";
 import pic3 from "./../assets/system/cardiac.png";
@@ -46,7 +48,7 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
       {/* Product Image */}
       <div className={styles.productImageContainer}>
         <img
-          src={product.image ?? pic7} // fallback local image
+          src={product.image ?? pic7}
           alt={product.name}
           className={styles.productImage}
           loading="lazy"
@@ -65,22 +67,12 @@ const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
         </h3>
 
         <div className={styles.priceContainer}>
-          <span className={styles.currentPrice} aria-label="Current price">
-            ₹{product.price.toFixed(2)}
-          </span>
-          <span
-            className={styles.originalPrice}
-            aria-label={`Original price ₹${product.originalPrice.toFixed(2)}`}
-          >
+          <span className={styles.currentPrice}>₹{product.price.toFixed(2)}</span>
+          <span className={styles.originalPrice}>
             MRP ₹{product.originalPrice.toFixed(2)}
           </span>
           {discountPercent > 0 && (
-            <span
-              className={styles.discount}
-              aria-label={`${discountPercent}% discount`}
-            >
-              {discountPercent}% off
-            </span>
+            <span className={styles.discount}>{discountPercent}% off</span>
           )}
         </div>
 
@@ -100,11 +92,7 @@ ProductCard.displayName = "ProductCard";
 // -----------------------------
 // 🔹 Pagination Component
 // -----------------------------
-const Pagination: FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
+const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = useMemo(() => {
     const pages: (number | string)[] = [];
     const maxVisible = 7;

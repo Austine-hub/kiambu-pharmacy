@@ -1,0 +1,838 @@
+/* Global Container */
+.reproductiveHealthContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hero Banner Section */
+.heroBanner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-color: #2c3e50;
+}
+
+.bannerSlide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.bannerSlide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.bannerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(142, 68, 173, 0.85) 0%,
+    rgba(52, 73, 94, 0.75) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerContent {
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  max-width: 900px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.bannerTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.bannerSubtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.bannerIndicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 2;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.indicator.activeIndicator {
+  background-color: white;
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Introduction Section */
+.introSection {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #8e44ad, #3498db);
+  border-radius: 2px;
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Team Section */
+.teamSection {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.teamCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.teamImageWrapper {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.teamImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.teamCard:hover .teamImage {
+  transform: scale(1.05);
+}
+
+.teamInfo {
+  padding: 30px;
+}
+
+.teamName {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.teamRole {
+  font-size: 1.2rem;
+  color: #8e44ad;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.teamCredentials {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.teamExperience {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #8e44ad;
+}
+
+.specializations {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #ecf0f1;
+}
+
+.specializations strong {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.specializations ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.specializations li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.specializations li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Services Section */
+.servicesSection {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.servicesIntro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.8;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.serviceItem {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.serviceItem:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.serviceBanner {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.serviceBannerOverlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(142, 68, 173, 0.8) 0%,
+    rgba(52, 152, 219, 0.7) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.serviceBannerTitle {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.serviceContent {
+  padding: 40px;
+}
+
+.serviceDescription {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.toggleButton {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+  background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+}
+
+.toggleButton:active {
+  transform: translateY(0);
+}
+
+.toggleIcon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.toggleButton:hover .toggleIcon {
+  transform: scale(1.2);
+}
+
+.testsContainer {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #8e44ad;
+  animation: slideDown 0.4s ease-out;
+}
+
+.testsTitle {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.testsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.testItem {
+  padding: 15px 20px;
+  background: white;
+  border-radius: 6px;
+  color: #2c3e50;
+  font-size: 1rem;
+  line-height: 1.6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+  padding-left: 50px;
+  transition: all 0.3s ease;
+}
+
+.testItem::before {
+  content: '✓';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-color: #27ae60;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.testItem:hover {
+  background-color: #f0f8ff;
+  transform: translateX(5px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Call to Action Section */
+.ctaSection {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
+  color: white;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.ctaText {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
+
+.primaryButton {
+  background-color: white;
+  color: #8e44ad;
+}
+
+.primaryButton:hover {
+  background-color: transparent;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: white;
+}
+
+.secondaryButton:hover {
+  background-color: white;
+  color: #8e44ad;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Emergency Notice Section */
+.emergencyNotice {
+  padding: 40px 0;
+  background-color: #fff3cd;
+  border-top: 4px solid #ffc107;
+  border-bottom: 4px solid #ffc107;
+}
+
+.emergencyContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.emergencyIcon {
+  font-size: 3rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.emergencyText h3 {
+  font-size: 1.6rem;
+  color: #856404;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.emergencyText p {
+  font-size: 1.1rem;
+  color: #856404;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    max-height: 3000px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .bannerTitle {
+    font-size: 2.8rem;
+  }
+
+  .bannerSubtitle {
+    font-size: 1.3rem;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceBannerTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    height: 400px;
+  }
+
+  .bannerTitle {
+    font-size: 2.2rem;
+  }
+
+  .bannerSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .introSection,
+  .teamSection,
+  .servicesSection,
+  .ctaSection {
+    padding: 60px 0;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .teamImageWrapper {
+    height: 350px;
+  }
+
+  .teamInfo {
+    padding: 25px;
+  }
+
+  .teamName {
+    font-size: 1.5rem;
+  }
+
+  .teamRole {
+    font-size: 1.1rem;
+  }
+
+  .serviceBanner {
+    height: 250px;
+  }
+
+  .serviceBannerTitle {
+    font-size: 1.6rem;
+  }
+
+  .serviceContent {
+    padding: 30px 20px;
+  }
+
+  .ctaTitle {
+    font-size: 2rem;
+  }
+
+  .ctaText {
+    font-size: 1rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .emergencyContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner {
+    height: 350px;
+  }
+
+  .bannerTitle {
+    font-size: 1.8rem;
+  }
+
+  .bannerSubtitle {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+  }
+
+  .introText {
+    font-size: 1rem;
+  }
+
+  .teamImageWrapper {
+    height: 300px;
+  }
+
+  .teamInfo {
+    padding: 20px;
+  }
+
+  .teamName {
+    font-size: 1.3rem;
+  }
+
+  .serviceBanner {
+    height: 200px;
+  }
+
+  .serviceBannerTitle {
+    font-size: 1.4rem;
+    padding: 0 15px;
+  }
+
+  .serviceContent {
+    padding: 25px 15px;
+  }
+
+  .serviceDescription {
+    font-size: 1rem;
+  }
+
+  .toggleButton {
+    font-size: 1rem;
+    padding: 14px 20px;
+  }
+
+  .testsContainer {
+    padding: 20px 15px;
+  }
+
+  .testsTitle {
+    font-size: 1.2rem;
+  }
+
+  .testItem {
+    font-size: 0.95rem;
+    padding: 12px 15px 12px 45px;
+  }
+
+  .testItem::before {
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    font-size: 0.8rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.7rem;
+  }
+
+  .ctaText {
+    font-size: 0.95rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+
+  .emergencyText h3 {
+    font-size: 1.3rem;
+  }
+
+  .emergencyText p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .heroBanner,
+  .ctaSection,
+  .emergencyNotice,
+  .toggleButton {
+    display: none;
+  }
+
+  .reproductiveHealthContainer {
+    background-color: white;
+  }
+
+  .serviceItem,
+  .teamCard {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .testsContainer {
+    display: block !important;
+  }
+}
+
+/* Accessibility Enhancements */
+.toggleButton:focus,
+.primaryButton:focus,
+.secondaryButton:focus,
+.indicator:focus {
+  outline: 3px solid #3498db;
+  outline-offset: 3px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .bannerOverlay,
+  .serviceBannerOverlay {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .testItem {
+    border: 2px solid #2c3e50;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .bannerSlide,
+  .toggleIcon,
+  .teamImage,
+  .testItem,
+  .primaryButton,
+  .secondaryButton,
+  .teamCard {
+    transition: none;
+  }
+
+  @keyframes fadeInUp,
+  @keyframes slideDown,
+  @keyframes pulse {
+    animation-duration: 0.01s;
+  }
+}

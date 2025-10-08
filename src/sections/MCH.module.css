@@ -1,0 +1,163 @@
+
+/* File: Component.module.css */
+
+:root {
+  --card-gap: 1rem;
+  --radius: 12px;
+  --muted: #666;
+  --accent: #0b6fb3;
+  --bg: #ffffff;
+  --surface: #f7f9fb;
+}
+
+.mchSection {
+  background: var(--bg);
+  color: #222;
+  padding: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.banner {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(11,111,179,0.08);
+  margin-bottom: 1rem;
+}
+
+.carouselInner {
+  position: relative;
+  height: 280px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  justify-items: start;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 600ms ease, transform 900ms ease;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.caption {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #cfd8de;
+  border: none;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: var(--accent);
+  box-shadow: 0 2px 8px rgba(11,111,179,0.25);
+}
+
+.contentWrap {
+  padding: 1rem 0.25rem;
+}
+
+.headerRow {
+  margin-bottom: 1rem;
+}
+
+.lead {
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--card-gap);
+  margin-bottom: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImageWrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.cardImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardBody {
+  padding: 0.75rem;
+}
+
+.servicesList ul {
+  margin: 0.5rem 0 1rem 1.25rem;
+  color: var(--muted);
+}
+
+.servicesList li {
+  margin-bottom: 0.5rem;
+}
+
+.note {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .carouselInner { height: 200px; }
+  .caption { padding: 0.75rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f12;
+    --surface: #071018;
+    --muted: #9aa6b2;
+    --accent: #3fa6ff;
+  }
+  .mchSection { color: #e6eef8; }
+}
+
+/* End of Component.module.css */

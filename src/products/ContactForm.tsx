@@ -35,29 +35,29 @@ const ContactForm: React.FC = () => {
         {/* --- Contact Info --- */}
         <div className={styles.infoColumn}>
           <p className={styles.introText}>
-            Our team of Pharmacists and Technicians are here to answer any
+            Our team of Doctorrs,Pharmacists and Clinicians are here to answer any
             questions you might have.
           </p>
 
           <h2 className={styles.sectionTitle}>Contact</h2>
           <div className={styles.contactDetails}>
-            <a href="mailto:info@bayviewrx.com" className={styles.link}>
-              info@bayviewrx.com
+            <a href="mailto:ajanjaaustine@gmail.com" className={styles.link}>
+              ajanjaaustine@gmail.com
             </a>
-            <a href="tel:+14012844505" className={styles.link}>
-              +1 (401) 284-4505
+            <a href="tel:+254796787207" className={styles.link}>
+              +254796787207
             </a>
           </div>
 
           <h2 className={styles.sectionTitle}>Address</h2>
           <address className={styles.address}>
-            3844 Post Road
+           40131 GATE B
             <br />
-            Warwick, RI
+            Juja, Kiambu
             <br />
             02886
             <br />
-            United States
+            Kenya
           </address>
 
           <h2 className={styles.sectionTitle}>Social</h2>
@@ -154,7 +154,7 @@ const ContactForm: React.FC = () => {
               id="phone"
               name="phone"
               className={styles.input}
-              placeholder="(***) ***-****"
+              placeholder="254 ***-****"
               value={formData.phone}
               onChange={handleChange}
             />
