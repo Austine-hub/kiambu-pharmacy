@@ -1,24 +1,26 @@
-/* --- Container --- */
+/* --- Global Container --- */
 .productGridContainer {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  padding: 20px;
-  max-width: 1200px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 2rem 1rem;
+  max-width: 1280px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #ffffff;
+  color: #1a1a1a;
 }
 
-/* --- Grid Layout --- */
+.sectionTitle {
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1e293b;
+}
+
+/* --- Grid --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 25px;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
 }
 
 /* --- Product Card --- */
@@ -26,130 +28,134 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fafafa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  transition: all 0.3s ease;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.productCard:hover {
+.productCard:hover,
+.productCard:focus-within {
   transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Product Image --- */
 .productImage {
   width: 100%;
-  max-width: 150px;
+  max-width: 160px;
   height: auto;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  background-color: #f5f5f5;
+  border-radius: 8px;
+  background-color: #f1f5f9;
+  margin-bottom: 0.75rem;
   object-fit: contain;
 }
 
 /* --- Product Name --- */
 .productName {
-  font-size: 0.9rem;
-  color: #333;
-  line-height: 1.4;
-  min-height: 3em;
-  margin-bottom: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* --- Button --- */
-.orderButton {
-  background-color: #2563eb; /* modern blue tone */
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
+  color: #334155;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+/* --- CTA Button (WhatsApp) --- */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.25);
 }
 
-.orderButton:hover {
-  background-color: #1e40af;
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  background-color: #1ebe5c;
   transform: scale(1.05);
+  outline: none;
 }
 
-.orderButton:active {
-  transform: scale(0.95);
-}
-
-/* --- Footer --- */
+/* --- Pagination Footer --- */
 .footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
 }
 
-/* --- Pagination --- */
+/* --- Pagination Buttons --- */
 .pagination {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .pageLink {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
   color: #2563eb;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.pageLink:hover {
+.pageLink:hover,
+.pageLink:focus-visible {
   background: #2563eb;
-  color: white;
+  color: #fff;
 }
 
 .pageLink.active {
   background: #2563eb;
-  color: white;
+  color: #fff;
   border-color: #2563eb;
-}
-
-.navArrow {
-  font-weight: bold;
 }
 
 /* --- Per Page Selector --- */
 .perPageSelector {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.4rem;
   font-size: 0.9rem;
-  color: #444;
+  color: #475569;
 }
 
 .perPageSelector select {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 4px 6px;
-  font-size: 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  background-color: #fff;
 }
 
 /* --- Responsive --- */
 @media (max-width: 600px) {
+  .grid {
+    gap: 1rem;
+  }
+
   .footer {
     flex-direction: column;
     align-items: stretch;
@@ -160,6 +166,6 @@
   }
 
   .perPageSelector {
-    justify-content: flex-end;
+    justify-content: center;
   }
 }

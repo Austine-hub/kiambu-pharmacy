@@ -1,227 +1,91 @@
-import { useState, useMemo, memo } from "react";
-import type { FC } from "react"; // ✅ type-only import for FC
+import React, { useCallback } from "react";
+import styles from "./ProductGrid.module.css";
 
-import styles from "./PharmacyProductGrid.module.css";
+// Import condition images
+import image1 from "../assets/conditions/rhinitis.png";
+import image2 from "../assets/conditions/cough.png";
+import image3 from "../assets/conditions/sore-throat.png";
+import image4 from "../assets/conditions/contraceptives.png";
+import image5 from "../assets/conditions/headache.png";
+import image6 from "../assets/conditions/fever.png";
+import image7 from "../assets/conditions/myalgia.png";
+import image8 from "../assets/conditions/chest-pain.png";
+import image9 from "../assets/conditions/fatigue.png";
+import image10 from "../assets/conditions/nigh-sweats.png";
+import image11 from "../assets/conditions/diarrhea.png";
 
-// ✅ Local Images
-import pic1 from "./../assets/system/cns.png";
-import pic2 from "./../assets/system/resp.png";
-import pic3 from "./../assets/system/cardiac.png";
-import pic4 from "./../assets/system/git.png";
-import pic5 from "./../assets/system/gut.png";
-import pic6 from "./../assets/system/msk.png";
-import pic7 from "./../assets/system/allergy.png";
-
-// -----------------------------
-// 🔹 Types
-// -----------------------------
 interface Product {
   id: number;
   name: string;
-  price: number;
-  originalPrice: number;
-  image?: string;
-  buyXGetY?: string;
+  image: string;
 }
 
-interface ProductCardProps {
-  product: Product;
-}
+const WHATSAPP_NUMBER = "254796787207";
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
+const products: Product[] = [
+  { id: 1, name: "Runny nose / Nasal congestion", image: image1 },
+  { id: 2, name: "Cough", image: image2 },
+  { id: 3, name: "Sore Throat Medicine", image: image3 },
+  { id: 4, name: "Contraceptives", image: image4 },
+  { id: 5, name: "Headache / Head pain", image: image5 },
+  { id: 6, name: "Fever / Hotness of the Body", image: image6 },
+  { id: 7, name: "Muscle / Body aches (Myalgia)", image: image7 },
+  { id: 8, name: "Chest pain", image: image8 },
+  { id: 9, name: "Fatigue / Lack of energy", image: image9 },
+  { id: 10, name: "Night sweats / Chills", image: image10 },
+  { id: 11, name: "Diarrhea", image: image11 },
+];
 
-// -----------------------------
-// 🔹 ProductCard Component
-// -----------------------------
-const ProductCard: FC<ProductCardProps> = memo(({ product }) => {
-  const discountPercent = useMemo(() => {
-    const diff = product.originalPrice - product.price;
-    return Math.max(0, Math.round((diff / product.originalPrice) * 100));
-  }, [product.price, product.originalPrice]);
-
-  return (
-    <article className={styles.productCard} role="listitem">
-      {/* Product Image */}
-      <div className={styles.productImageContainer}>
-        <img
-          src={product.image ?? pic7}
-          alt={product.name}
-          className={styles.productImage}
-          loading="lazy"
-        />
-        {product.buyXGetY && (
-          <span className={styles.badgeBuyXGetY} aria-label="Special offer">
-            {product.buyXGetY}
-          </span>
-        )}
-      </div>
-
-      {/* Product Info */}
-      <div className={styles.productInfo}>
-        <h3 className={styles.productName} title={product.name}>
-          {product.name}
-        </h3>
-
-        <div className={styles.priceContainer}>
-          <span className={styles.currentPrice}>₹{product.price.toFixed(2)}</span>
-          <span className={styles.originalPrice}>
-            MRP ₹{product.originalPrice.toFixed(2)}
-          </span>
-          {discountPercent > 0 && (
-            <span className={styles.discount}>{discountPercent}% off</span>
-          )}
-        </div>
-
-        <button
-          type="button"
-          className={styles.addButton}
-          aria-label={`Add ${product.name} to cart`}
-        >
-          Add
-        </button>
-      </div>
-    </article>
-  );
-});
-ProductCard.displayName = "ProductCard";
-
-// -----------------------------
-// 🔹 Pagination Component
-// -----------------------------
-const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
-  const pageNumbers = useMemo(() => {
-    const pages: (number | string)[] = [];
-    const maxVisible = 7;
-
-    if (totalPages <= maxVisible) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-
-    if (currentPage <= 4) {
-      pages.push(...[1, 2, 3, 4, 5], "…", totalPages);
-    } else if (currentPage >= totalPages - 3) {
-      pages.push(
-        1,
-        "…",
-        totalPages - 4,
-        totalPages - 3,
-        totalPages - 2,
-        totalPages - 1,
-        totalPages
-      );
-    } else {
-      pages.push(
-        1,
-        "…",
-        currentPage - 1,
-        currentPage,
-        currentPage + 1,
-        "…",
-        totalPages
-      );
-    }
-
-    return pages;
-  }, [currentPage, totalPages]);
+const ProductGrid: React.FC = () => {
+  const handleConsultClick = useCallback((condition: string) => {
+    const message = `Hello! 👋 I'm seeking professional healthcare advice regarding: ${condition}. Could you please assist me?`;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  }, []);
 
   return (
-    <nav className={styles.pagination} aria-label="Pagination Navigation">
-      <button
-        className={styles.paginationArrow}
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        aria-label="Previous Page"
-      >
-        ‹
-      </button>
-
-      {pageNumbers.map((page, idx) =>
-        page === "…" ? (
-          <span key={`ellipsis-${idx}`} className={styles.paginationEllipsis}>
-            …
-          </span>
-        ) : (
-          <button
-            key={page}
-            className={`${styles.paginationNumber} ${
-              currentPage === page ? styles.active : ""
-            }`}
-            onClick={() => onPageChange(page as number)}
-            aria-current={currentPage === page ? "page" : undefined}
-          >
-            {page}
-          </button>
-        )
-      )}
-
-      <button
-        className={styles.paginationArrow}
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        aria-label="Next Page"
-      >
-        ›
-      </button>
-    </nav>
-  );
-};
-
-// -----------------------------
-// 🔹 Main Component
-// -----------------------------
-const PharmacyProductGrid: FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "Apollo Pharmacy Compressor Nebulizer, 1 Count",
-      price: 1517.9,
-      originalPrice: 2399.0,
-      image: pic1,
-      buyXGetY: "Buy 2 • Rs.1,990",
-    },
-    {
-      id: 2,
-      name: "Omron Blood Pressure Monitor HEM-7121-J, 1 Count",
-      price: 1750.8,
-      originalPrice: 2290.0,
-      image: pic2,
-    },
-    { id: 3, name: "Digital Thermometer", price: 199.0, originalPrice: 399.0, image: pic3 },
-    { id: 4, name: "First Aid Kit - 50 Items", price: 850.0, originalPrice: 1200.0, image: pic4 },
-    { id: 5, name: "Hand Sanitizer (500ml)", price: 149.0, originalPrice: 250.0, image: pic5 },
-    { id: 6, name: "Reusable Face Mask (Pack of 3)", price: 299.0, originalPrice: 450.0, image: pic6 },
-  ];
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  return (
-    <section className={styles.container} aria-labelledby="popular-products">
-      <h2 id="popular-products" className={styles.title}>
-        Most Popular Products
+    <section className={styles.container} aria-labelledby="popular-conditions">
+      <h2 id="popular-conditions" className={styles.title}>
+        Most Popular Presentations
       </h2>
 
-      <div className={styles.productGrid} role="list">
+      <div className={styles.grid}>
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <article
+            key={product.id}
+            className={styles.card}
+            role="group"
+            aria-label={product.name}
+          >
+            <div className={styles.imageWrapper}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className={styles.image}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className={styles.watermark}>
+                <span>Kiambu Pharmacy</span>
+                <span>Trusted Care</span>
+              </div>
+            </div>
+
+            <h3 className={styles.productName}>{product.name}</h3>
+            
+            <button
+              onClick={() => handleConsultClick(product.name)}
+              className={styles.button}
+              aria-label={`Consult a professional about ${product.name}`}
+            >
+              Consult Us
+            </button>
+          </article>
         ))}
       </div>
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={8}
-        onPageChange={handlePageChange}
-      />
     </section>
   );
 };
 
-export default PharmacyProductGrid;
+export default ProductGrid;

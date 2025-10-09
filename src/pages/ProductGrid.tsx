@@ -11,19 +11,9 @@ import image6 from "../assets/conditions/fever.png";
 import image7 from "../assets/conditions/myalgia.png";
 import image8 from "../assets/conditions/chest-pain.png";
 import image9 from "../assets/conditions/fatigue.png";
-//import image9 from "../assets/whatsapp/whatsapp1.png";
 import image10 from "../assets/conditions/nigh-sweats.png";
 import image11 from "../assets/conditions/diarrhea.png";
-//import consultation1 from "../assets/consultation/consultation1.png";
-//import whatsapp1 from "../assets/whatsapp/whatsapp1.png";
-//import whatsapp3 from "../assets/whatsapp/whatsapp3.png";
-//import consultation1 from "../assets/consultation/consultation1.png";
-//import whatsapp1 from "../assets/whatsapp/whatsapp1.png";
-//import whatsapp3 from "../assets/whatsapp/whatsapp3.png";
-//import consultation1 from "../assets/consultation/consultation1.png";
 
-
-// Define the product type
 interface Product {
   id: number;
   name: string;
@@ -31,7 +21,6 @@ interface Product {
 }
 
 const ProductGrid: React.FC = () => {
-  // Reuse existing images — avoids unnecessary imports
   const products: Product[] = [
     { id: 1, name: "Runny nose / Nasal congestion", image: image1 },
     { id: 2, name: "Cough", image: image2 },
@@ -47,30 +36,42 @@ const ProductGrid: React.FC = () => {
   ];
 
   return (
-    <section className={styles.container}>
-      <h2 className={styles.title}>Most Popular Presentations </h2>
+    <section className={styles.container} aria-labelledby="popular-title">
+      <h2 id="popular-title" className={styles.title}>
+        Most Popular Presentations
+      </h2>
 
-      <div className={styles.grid}>
+      <div className={styles.grid} role="list">
         {products.map((product) => (
-          <article key={product.id} className={styles.card}>
-            <div className={styles.imageWrapper}>
+          <article key={product.id} role="listitem" className={styles.card}>
+            <figure className={styles.imageWrapper}>
               <img
                 src={product.image}
                 alt={product.name}
                 className={styles.image}
                 loading="lazy"
+                decoding="async"
               />
-              <div className={styles.watermark}>
-                <span>WATERMARK</span>
-                <span>WATERMARK</span>
-                <span>WATERMARK</span>
+              <figcaption className="sr-only">{product.name}</figcaption>
+
+              <div className={styles.watermark} aria-hidden="true">
+                <span>Kiambu Pharmacy</span>
+                <span>Healthcare</span>
+                <span>Trusted Care</span>
               </div>
-            </div>
+            </figure>
 
             <h3 className={styles.productName}>{product.name}</h3>
-            <button className={styles.button} aria-label={`Get quote for ${product.name}`}>
-              Consult us
-            </button>
+
+            <a
+              href="https://wa.me/254796787207"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+              aria-label={`Consult a professional about ${product.name} via WhatsApp`}
+            >
+              <span>Consult Us</span>
+            </a>
           </article>
         ))}
       </div>

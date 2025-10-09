@@ -1,190 +1,164 @@
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: clamp(1.5rem, 3vw, 3rem) 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 24px 0;
-  padding: 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 2rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
-  background: #fff;
+  background-color: #fff;
+  border-radius: 1rem;
   border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  margin-bottom: 16px;
   overflow: hidden;
-  border-radius: 4px;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.06);
 }
 
 .watermark {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  pointer-events: none;
-  opacity: 0.15;
-  font-size: 0.75rem;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #666;
-  transform: rotate(-45deg);
-  overflow: hidden;
-}
-
-.watermark span {
-  white-space: nowrap;
-  letter-spacing: 0.5em;
-  text-align: center;
+  text-transform: uppercase;
+  color: #1e293b;
+  opacity: 0.08;
+  transform: rotate(-30deg);
+  pointer-events: none;
 }
 
 .productName {
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #333;
-  text-align: center;
-  margin: 0 0 16px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 1rem 0 0.75rem;
   line-height: 1.4;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0 0.5rem;
+  min-height: 48px;
 }
 
 .button {
-  background: #fff;
-  border: 1px solid #333;
-  border-radius: 3px;
-  padding: 8px 16px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  display: inline-block;
+  background-color: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+  margin-bottom: 1rem;
+  width: fit-content;
 }
 
-.button:hover {
-  background: #333;
-  color: #fff;
+.button:hover,
+.button:focus {
+  background-color: #16a34a;
 }
 
 .button:active {
   transform: translateY(1px);
 }
 
-/* Tablet (3 columns) */
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  
-  .container {
-    padding: 16px;
-  }
+.button:focus-visible {
+  outline: 3px solid #16a34a;
+  outline-offset: 3px;
 }
 
-/* Tablet Small (2 columns) */
+/* ✅ Responsive layout */
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 1rem;
   }
-  
-  .title {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-  }
-  
-  .card {
-    padding: 12px;
-  }
-  
-  .productName {
-    font-size: 0.8125rem;
-    min-height: 36px;
-  }
-  
+
   .button {
-    font-size: 0.8125rem;
-    padding: 7px 14px;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
   }
 }
 
-/* Mobile (1 column) */
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .container {
-    padding: 12px;
-  }
-  
-  .title {
-    font-size: 1.125rem;
-    margin-bottom: 16px;
-  }
-  
+/* ✅ Dark mode ready */
+@media (prefers-color-scheme: dark) {
   .card {
-    padding: 16px;
+    background-color: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
   }
-  
-  .productName {
-    font-size: 0.875rem;
-    min-height: auto;
-  }
-  
+
   .button {
-    font-size: 0.875rem;
-    padding: 10px 20px;
-    width: 100%;
+    background-color: #10b981;
+  }
+
+  .button:hover {
+    background-color: #059669;
+  }
+
+  .watermark {
+    color: #94a3b8;
   }
 }
 
-/* High-density displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .card {
-    border-width: 0.5px;
+/* ✅ Reduced motion safe */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
   }
+}
+
+/* ✅ Hide figcaption visually but keep it accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
