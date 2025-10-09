@@ -1,11 +1,12 @@
 /* ===== Base Styles ===== */
 .navbar {
-  position: sticky;
+  position: sticky; /* changed from fixed */
   top: 0;
+  left: 0;
   width: 100%;
   background: linear-gradient(135deg, #fffdf8, #ffe8cc);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
+  z-index: 1200;  /*Always above navbar/toggle menu */
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
@@ -175,7 +176,7 @@
   }
 
   .illustration {
-    display: none; /* Hide big illustration on small screens */
+    display: none;
   }
 
   .leftSection {
@@ -188,6 +189,11 @@
     width: 100%;
     justify-content: center;
     max-width: 340px;
+  }
+
+  /* ensure navbar links below don't get hidden */
+  body {
+    padding-bottom: 50px; /* create space below banner */
   }
 }
 
@@ -206,17 +212,15 @@
   }
 }
 
-
-
-/* ===== MOBILE OPTIMIZATION (Hide all except WhatsApp button) ===== */
+/* ===== MOBILE OPTIMIZATION ===== */
 @media (max-width: 768px) {
   .leftSection,
   .illustration {
-    display: none !important; /* Hide logo, brand text, and illustration */
+    display: none !important;
   }
 
   .container {
-    justify-content: center; /* Center the button horizontally */
+    justify-content: center;
     padding: 0.8rem 1rem;
   }
 

@@ -1,13 +1,13 @@
 /* ───────────────────────────────
-   📦 Products.module.css
-   Modernized with variables, responsive grid & accessibility
+   🌐 Products.module.css
+   Modernized for scalability, RWD & accessibility
 ─────────────────────────────── */
 
 :root {
   --color-bg: #ffffff;
   --color-bg-alt: #f9fafb;
   --color-text: #1a1a1a;
-  --color-muted: #666;
+  --color-muted: #555;
   --color-primary: #0066cc;
   --color-primary-hover: #0052a3;
   --color-accent: #e91e63;
@@ -16,10 +16,10 @@
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
 
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -43,33 +43,35 @@
   overflow: hidden;
 }
 
-/* Container */
+/* --- Container --- */
 .container {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   font-family: var(--font-family);
+  color: var(--color-text);
 }
 
-/* Header */
+/* --- Header --- */
 .header {
   background: var(--color-bg-alt);
   padding: var(--spacing-md);
   border-bottom: 1px solid var(--color-border);
+  text-align: center;
 }
 
 .header h1 {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  font-weight: 500;
-  color: var(--color-text);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
 }
 
-/* Controls */
+/* --- Controls --- */
 .controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: var(--spacing-sm);
   padding: var(--spacing-md);
   background: linear-gradient(180deg, #d4e9f7 0%, #e8f4fb 100%);
 }
@@ -81,7 +83,7 @@
 }
 
 .searchIcon {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--color-primary);
 }
 
@@ -95,7 +97,7 @@
 }
 
 .sortSelect {
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  padding: 0.5rem 1.25rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-bg);
@@ -104,12 +106,12 @@
   transition: border var(--transition);
 }
 
-.sortSelect:focus {
-  outline: none;
-  border-color: var(--color-primary);
+.sortSelect:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
-/* Grid */
+/* --- Product Grid --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -117,12 +119,12 @@
   padding: var(--spacing-md);
 }
 
-/* Product Card */
+/* --- Card --- */
 .card {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,35 +132,40 @@
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.card:hover {
+.card:hover,
+.card:focus-within {
   transform: translateY(-4px);
   box-shadow: var(--shadow-sm);
 }
 
 .image {
   width: 100%;
-  height: 160px;
+  height: 180px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--spacing-sm);
-  background: var(--color-bg-alt);
-  border-radius: var(--radius-sm);
+  overflow: hidden;
 }
 
-.icon {
-  font-size: 3rem;
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
+/* --- Text --- */
 .name {
   font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 500;
-  color: var(--color-text);
   margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
   line-height: 1.4;
-  min-height: 42px;
 }
 
+/* --- Button --- */
 .btn {
   background: var(--color-primary);
   color: #fff;
@@ -174,21 +181,18 @@
   background: var(--color-primary-hover);
 }
 
-.btn:active {
-  transform: scale(0.97);
-}
-
-.btn:focus {
+.btn:focus-visible {
   outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* Pagination */
+/* --- Pagination --- */
 .pagination {
   display: flex;
   justify-content: center;
   gap: var(--spacing-xs);
   padding: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
 .pageBtn {
@@ -203,21 +207,21 @@
   min-width: 36px;
 }
 
-.pageBtn:hover {
+.pageBtn:hover,
+.pageBtn:focus-visible {
   background: var(--color-accent);
   color: #fff;
+  outline: none;
 }
 
-.pageBtn:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-/* Responsive */
+/* --- Responsive --- */
 @media (max-width: 768px) {
   .controls {
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
+    align-items: stretch;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 }

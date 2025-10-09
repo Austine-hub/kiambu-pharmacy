@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./WhatsAppBanner.module.css";
 
-// images
 import logo from "../assets/whatsapp/whatsapp1.png";
 import whatsappIcon from "../assets/whatsapp/whatsapp3.png";
 import illustration from "../assets/consultation/consultation1.png";
@@ -10,15 +9,12 @@ const WhatsAppBanner: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Hide banner (except button) when scrolling up
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       if (currentScroll < lastScrollY) {
-        // scrolling up → hide content
         setIsVisible(true);
       } else {
-        // scrolling down → show content
         setIsVisible(true);
       }
       setLastScrollY(currentScroll);
@@ -31,7 +27,7 @@ const WhatsAppBanner: React.FC = () => {
   return (
     <nav className={`${styles.navbar} ${!isVisible ? styles.hidden : ""}`}>
       <div className={styles.container}>
-        {/* Left Section — Logo + Text */}
+        {/* Left Section */}
         <div className={styles.leftSection}>
           <div className={styles.logoSection}>
             <img src={logo} alt="Bethelex Health Services logo" className={styles.logo} />
@@ -52,7 +48,7 @@ const WhatsAppBanner: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Section — CTA Button */}
+        {/* WhatsApp Button */}
         <div className={styles.buttonSection}>
           <a
             href="https://wa.me/254796787207"
