@@ -49,6 +49,10 @@
   transition: color var(--transition);
 }
 
+.brand1 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
 .brandAccent {
   color: var(--color-accent);
 }

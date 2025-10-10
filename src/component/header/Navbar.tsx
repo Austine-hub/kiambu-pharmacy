@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
         {/* === Brand === */}
         <div className={styles.brand}>
           <NavLink to="/" className={styles.brandLink} onClick={closeMenu}>
-            <span className={styles.brandAccent}>Simply</span>Meds
+            <span className={styles.brandAccent}>Simply</span> <p className={styles.brand1}>BethelexMeds</p>
           </NavLink>
         </div>
 

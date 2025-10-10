@@ -211,7 +211,7 @@ const Renal: React.FC = () => {
         tabIndex={0}
         aria-level={2}
       >
-        Top Prescribed Renal Medications in the U.S.
+        Our Top Prescribed Renal Medications.
       </h2>
 
       <p className={styles.lead} id="renal-intro">
