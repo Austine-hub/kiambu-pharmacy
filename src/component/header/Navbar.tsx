@@ -1,6 +1,7 @@
 // src/components/header/Navbar.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavItem {
@@ -9,7 +10,7 @@ interface NavItem {
   badge?: string;
 }
 
-const mainLinks: NavItem[] = [
+const NAV_ITEMS: NavItem[] = [
   { label: "Buy Medicines", path: "/buy-medicines" },
   { label: "General Consultation", path: "/consult" },
   { label: "Lab Tests", path: "/lab" },
@@ -18,19 +19,38 @@ const mainLinks: NavItem[] = [
   { label: "Radiological Services", path: "/radiology", badge: "New" },
   { label: "Reproductive Health", path: "/obgyn", badge: "New" },
 ];
+
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
+  // Shrink navbar on scroll (modern UX enhancement)
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className={styles.navbar}>
+    <header
+      className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}
+      role="banner"
+    >
       <nav
         className={styles.container}
         aria-label="Main navigation"
         role="navigation"
       >
+        {/* === Brand === */}
+        <div className={styles.brand}>
+          <NavLink to="/" className={styles.brandLink} onClick={closeMenu}>
+            <span className={styles.brandAccent}>Simply</span>Meds
+          </NavLink>
+        </div>
+
         {/* === Mobile Toggle === */}
         <button
           type="button"
@@ -40,25 +60,16 @@ const Navbar: React.FC = () => {
           aria-controls="main-navigation"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        {/* === Logo or Brand (optional) === */}
-        <div className={styles.brand}>
-          <NavLink to="/" className={styles.brandLink} onClick={closeMenu}>
-            SimplyMeds
-          </NavLink>
-        </div>
-
-        {/* === Main Links === */}
+        {/* === Main Navigation === */}
         <ul
           id="main-navigation"
           className={`${styles.mainLinks} ${menuOpen ? styles.active : ""}`}
           role="menubar"
         >
-          {mainLinks.map(({ label, path, badge }) => (
+          {NAV_ITEMS.map(({ label, path, badge }) => (
             <li key={label} role="none">
               <NavLink
                 to={path}
@@ -68,7 +79,7 @@ const Navbar: React.FC = () => {
                 }
                 role="menuitem"
               >
-                {label}
+                <span>{label}</span>
                 {badge && <span className={styles.badge}>{badge}</span>}
               </NavLink>
             </li>

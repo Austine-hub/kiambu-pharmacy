@@ -1,15 +1,15 @@
 :root {
-  --color-primary: #0f5f59;
-  --color-accent: #059669;
+  --color-primary: #0f766e; /* Calm medical teal */
+  --color-accent: #14b8a6;
   --color-bg: #ffffff;
   --color-text: #1f2937;
   --color-text-light: #f9fafb;
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
   --transition: 0.3s ease;
-  --radius: 6px;
+  --radius: 8px;
 }
 
-/* === Base === */
+/* === Navbar Base === */
 .navbar {
   position: sticky;
   top: 0;
@@ -17,25 +17,40 @@
   background: var(--color-bg);
   box-shadow: var(--shadow-md);
   font-family: "Segoe UI", Roboto, sans-serif;
+  transition: background var(--transition), box-shadow var(--transition),
+    padding var(--transition);
 }
 
+.scrolled {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  background: #f9fafb;
+}
+
+/* === Container === */
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 60px;
+  min-height: 68px;
 }
 
 /* === Brand === */
 .brandLink {
+  display: inline-flex;
+  align-items: center;
   color: var(--color-primary);
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5px;
+  transition: color var(--transition);
+}
+
+.brandAccent {
+  color: var(--color-accent);
 }
 
 .brandLink:hover,
@@ -44,7 +59,7 @@
   outline: none;
 }
 
-/* === Main Navigation === */
+/* === Navigation === */
 .mainLinks {
   display: flex;
   align-items: center;
@@ -54,23 +69,23 @@
 }
 
 .navLink {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 8px;
   padding: 0.75rem 1rem;
   color: var(--color-text);
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   border-radius: var(--radius);
-  transition: color var(--transition), background var(--transition);
+  transition: background var(--transition), color var(--transition);
 }
 
 .navLink:hover,
 .navLink:focus-visible {
-  background: rgba(5, 150, 105, 0.1);
+  background: rgba(20, 184, 166, 0.08);
   color: var(--color-accent);
-  outline: none;
 }
 
 .activeLink {
@@ -85,6 +100,7 @@
   font-weight: 600;
   padding: 2px 8px;
   border-radius: var(--radius);
+  line-height: 1.2;
 }
 
 /* === Mobile Toggle === */
@@ -93,19 +109,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
   color: var(--color-text);
   padding: 0.5rem;
+  transition: color var(--transition);
 }
 
-.bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--color-text);
-  border-radius: 2px;
-  margin: 4px 0;
-  transition: all var(--transition);
+.menuToggle:hover,
+.menuToggle:focus-visible {
+  color: var(--color-accent);
 }
 
 /* === Responsive === */
@@ -116,7 +127,7 @@
 
   .mainLinks {
     position: absolute;
-    top: 60px;
+    top: 68px;
     left: 0;
     flex-direction: column;
     width: 100%;
@@ -126,6 +137,7 @@
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
   }
 
   .mainLinks.active {
@@ -136,22 +148,22 @@
 
   .navLink {
     width: 100%;
-    justify-content: space-between;
-    padding: 0.9rem 1.2rem;
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
+    justify-content: space-between;
+  }
+
+  .badge {
+    font-size: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .brandLink {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 
   .navLink {
     font-size: 14px;
-  }
-
-  .badge {
-    font-size: 10px;
   }
 }
