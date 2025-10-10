@@ -20,6 +20,14 @@ const ProductsPage = () => {
         <Pro2 />
       </section>
 
+     {/* Featured Grid Section */}
+      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
+        <h2 id="featured-grid" className={styles.title}>
+          Featured Product Grid
+        </h2>
+        <ProductsGrid />
+      </section>
+
       {/* Therapeutic Use Section */}
       <section
         aria-labelledby="therapeutic-use"
@@ -37,14 +45,6 @@ const ProductsPage = () => {
           Top Products
         </h2>
         <PharmacyProductGrid />
-      </section>
-
-      {/* Featured Grid Section */}
-      <section aria-labelledby="featured-grid" className={styles.sectionAlt}>
-        <h2 id="featured-grid" className={styles.title}>
-          Featured Product Grid
-        </h2>
-        <ProductsGrid />
       </section>
 
       {/* Single Product Section */}
