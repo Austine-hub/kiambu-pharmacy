@@ -74,8 +74,8 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 };
 
 const ProductGridFooter: React.FC = () => {
-  const totalPages = 5;
-  const currentPage = 1;
+    let totalPages = 5;
+    let currentPage = 1;
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
