@@ -1,164 +1,237 @@
-/* --- Container --- */
-.productGridContainer {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: #fff;
+/* ----------------------------------------------------------------
+   Renal.module.css
+   - Optimized, accessible, and responsive styling for renal.tsx
+------------------------------------------------------------------ */
+
+:root {
+  --max-width: 1200px;
+  --gap: 1.25rem;
+  --card-radius: 12px;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --wa-green: #25d366;
+  --bg-light: #ffffff;
+  --shadow-light: rgba(15, 23, 42, 0.06);
+  --shadow-hover: rgba(15, 23, 42, 0.08);
 }
 
-/* --- Grid Layout --- */
+.productGridContainer {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 2.5rem 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background-color: var(--bg-light);
+  color: #0f172a;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(1.4rem, 2.3vw, 2rem);
+  font-weight: 700;
+  color: #0b1220;
+  margin-bottom: 0.5rem;
+}
+
+.center {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.lead {
+  text-align: center;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gap);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 
-/* --- Product Card --- */
 .productCard {
+  background: linear-gradient(180deg, #ffffff, #fcfcff);
+  border-radius: var(--card-radius);
+  box-shadow: 0 6px 18px var(--shadow-light);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fafafa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  transition: all 0.3s ease;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  justify-content: space-between;
+  height: 100%;
 }
 
-.productCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+.productCard:hover,
+.productCard:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px var(--shadow-hover);
 }
 
-/* --- Product Image --- */
+.imageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .productImage {
   width: 100%;
-  max-width: 150px;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  background-color: #f5f5f5;
+  height: 160px;
   object-fit: contain;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  margin-bottom: 0.75rem;
 }
 
-/* --- Product Name --- */
+@media (max-width: 520px) {
+  .productImage {
+    height: 120px;
+  }
+}
+
 .productName {
-  font-size: 0.9rem;
-  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0.25rem 0 0.75rem;
   line-height: 1.4;
-  min-height: 3em;
-  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-height: 2.4rem;
 }
 
-/* --- Button --- */
+.cardActions {
+  width: 100%;
+  margin-top: auto;
+}
+
 .orderButton {
-  background-color: #2563eb; /* modern blue tone */
+  background-color: var(--wa-green);
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .orderButton:hover {
-  background-color: #1e40af;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  background-color: #20ba5a;
 }
 
-.orderButton:active {
-  transform: scale(0.95);
+.orderButton:focus {
+  outline: 3px solid rgba(37, 211, 102, 0.3);
+  outline-offset: 2px;
 }
 
-/* --- Footer --- */
 .footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  gap: 1rem;
 }
 
-/* --- Pagination --- */
 .pagination {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .pageLink {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 0.85rem;
-  color: #2563eb;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
-.pageLink:hover {
-  background: #2563eb;
-  color: white;
+.pageLink:hover,
+.pageLink:focus {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
-.pageLink.active {
-  background: #2563eb;
-  color: white;
-  border-color: #2563eb;
+.pageLink[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.navArrow {
-  font-weight: bold;
+.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
-/* --- Per Page Selector --- */
 .perPageSelector {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.9rem;
-  color: #444;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
 }
 
 .perPageSelector select {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 4px 6px;
-  font-size: 0.85rem;
+  border: 1px solid #e6edf3;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  background-color: #fff;
 }
 
-/* --- Responsive --- */
+/* Screen reader only */
+.srOnly {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 600px) {
   .footer {
     flex-direction: column;
     align-items: stretch;
   }
-
-  .pagination {
-    justify-content: center;
-  }
-
   .perPageSelector {
     justify-content: flex-end;
   }

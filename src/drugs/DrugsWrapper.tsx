@@ -9,13 +9,14 @@ import PharmacyProductGrid from "../pages/PharmacyProductGrid";
 import Products from "../products/Products";
 import Resp from "./Resp";
 import Renal from "./Renal";
+import GIT from "./GIT";
 
 const DrugsWrapper: React.FC = () => {
   const sections = [
-    { title: "Heart Drugs", component: <Pro2 /> },
     { title: "Respiratory Drugs", component: <Resp /> },
-    { title: "Gastrointestinal Drugs", component: <Resp /> }, // Replace with Gastro component when available
     { title: "Renal Drugs", component: <Renal /> },
+    { title: "Heart Drugs", component: <Pro2 /> },
+    { title: "Gastrointestinal Drugs", component: <GIT /> }, // Replace with Gastro component when available
     { title: "CNS Drugs", component: <Renal /> }, // Replace with CNS component when ready
   ];
 

@@ -1,23 +1,33 @@
 /* --- Container --- */
 .productGridContainer {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  padding: 20px;
-  max-width: 1200px;
+  padding: 2rem 1rem;
+  max-width: 1280px;
   margin: 0 auto;
   background-color: #fff;
+  color: #222;
+}
+
+/* --- Title --- */
+.sectionTitle {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1e40af;
+  letter-spacing: 0.5px;
 }
 
 /* --- Grid Layout --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 25px;
+    gap: 2rem;
   }
 }
 
@@ -27,56 +37,55 @@
   flex-direction: column;
   align-items: center;
   background: #fafafa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.productCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+.productCard:hover,
+.productCard:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Product Image --- */
 .productImage {
   width: 100%;
-  max-width: 150px;
+  max-width: 160px;
   height: auto;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  background-color: #f5f5f5;
+  border-radius: 8px;
+  background-color: #f9fafb;
   object-fit: contain;
+  margin-bottom: 1rem;
 }
 
 /* --- Product Name --- */
 .productName {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #333;
-  line-height: 1.4;
-  min-height: 3em;
-  margin-bottom: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-bottom: 0.75rem;
 }
 
 /* --- Button --- */
 .orderButton {
-  background-color: #2563eb; /* modern blue tone */
+  background-color: #22c55e;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 0.85rem;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.orderButton:hover {
-  background-color: #1e40af;
+.orderButton:hover,
+.orderButton:focus {
+  background-color: #16a34a;
   transform: scale(1.05);
 }
 
@@ -90,17 +99,17 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
 }
 
 /* --- Pagination --- */
 .pagination {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.4rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -109,15 +118,16 @@
 .pageLink {
   background: white;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
+  border-radius: 6px;
+  padding: 6px 12px;
   font-size: 0.85rem;
   color: #2563eb;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.pageLink:hover {
+.pageLink:hover,
+.pageLink:focus {
   background: #2563eb;
   color: white;
 }
@@ -128,15 +138,11 @@
   border-color: #2563eb;
 }
 
-.navArrow {
-  font-weight: bold;
-}
-
 /* --- Per Page Selector --- */
 .perPageSelector {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 0.9rem;
   color: #444;
 }
@@ -149,7 +155,7 @@
 }
 
 /* --- Responsive --- */
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .footer {
     flex-direction: column;
     align-items: stretch;
